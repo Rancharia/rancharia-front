@@ -1,0 +1,7 @@
+{
+  "name": "rancharia-front",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}
