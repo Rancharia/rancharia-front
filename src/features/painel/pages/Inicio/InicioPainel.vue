@@ -1,10 +1,10 @@
 <template>
     <div class="container-principal-painel">
         <div class="opcoes-painel">
-        <OpcaoPainel :iconOption="create" />
-        <OpcaoPainel :iconOption="fastFood" />
-        <OpcaoPainel :iconOption="person" />
-        <OpcaoPainel :iconOption="grid" />
+        <OpcaoPainel DescricaoOpcao="Pedidos" :iconOption="create" />
+        <OpcaoPainel DescricaoOpcao="Produtos" :iconOption="fastFood" />
+        <OpcaoPainel DescricaoOpcao="Clientes" :iconOption="person" />
+        <OpcaoPainel DescricaoOpcao="Estoque" :iconOption="grid" />
     </div>
     </div>
 </template>

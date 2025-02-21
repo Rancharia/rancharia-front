@@ -1,7 +1,7 @@
 <template>
     <div class="option">
         <ion-icon :icon="iconOption" class="icon"></ion-icon>
-        <p>Pedidos</p>
+        <p>{{ DescricaoOpcao }}</p>
     </div>
 </template>
 
@@ -9,7 +9,11 @@
 
 defineProps({
     iconOption:{
-        require: true
+        required: true
+    },
+    DescricaoOpcao:{
+        type: String,
+        required: true
     }
 })
 </script>

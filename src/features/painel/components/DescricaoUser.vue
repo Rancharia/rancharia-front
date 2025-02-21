@@ -34,15 +34,10 @@
     font-size: 14px;
     margin: 0;
 }
-.nome {
+.nome, .funcao {
     font-weight: 600;
 }
-.funcao{
-    font-weight: 600;
-}
-.operacao{
-    font-weight: 600;
-}
+
 .line {
     width: 1px;
     height: 20px; 

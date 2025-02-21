@@ -1,6 +1,6 @@
 <template>
     <footer class="footer-rancharia">
-      <p>@AtenaAgência</p>
+      <p>@Rancharia</p>
     </footer>
   </template>
   
