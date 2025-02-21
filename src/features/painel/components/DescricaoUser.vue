@@ -10,6 +10,9 @@
 
 <style scoped>
 .descricao-user{
+    position: absolute;
+    width: 100%;
+    margin-top: 57px;
     background-color: #FFEFDA;
     font-family: Poppins, Arial;
     color: black;

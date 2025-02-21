@@ -2,17 +2,11 @@
   <ion-page>
     <ion-content>
       <div class="pagina-conteudo">
-        <div class="div-imagem-login">
-          <img
-            class="imagem-login"
-            src="/public/imgLogin.png"
-            alt="imagem de login"
-          />
-        </div>
+        <div class="div-imagem-login"></div>
         <div class="conteudo-centralizado">
           <img
             class="logo-restaurante"
-            src="../../../../public/RanchariaLogoPetro.png"
+            src="@/assets/logo/RanchariaLogoPetro.png"
             alt="logo do restaurante"
           />
           <div class="container-branco">
@@ -36,14 +30,11 @@ import { IonContent, IonPage } from "@ionic/vue";
   height: 85px;
 }
 .pagina-conteudo {
-  overflow: hidden;
   width: 100%;
   height: 100vh;
-  gap: 305px;
   display: flex;
   background-color: #F5F5F5;
   align-items: center;
-  justify-content: flex-start;
 }
 
 .container-branco {
@@ -61,16 +52,19 @@ import { IonContent, IonPage } from "@ionic/vue";
   padding-bottom: 67px;
   font-size: 12px;
 }
-.imagem-login {
-  margin-right: auto;
-  width: 899px;
-  height: 100%;
-  object-fit: cover
-}
+
 .conteudo-centralizado {
+  margin: auto;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
+}
+
+.div-imagem-login{
+  width: 50%;
+  height: 100vh;
+  background-image: url("@/assets/ImgLogin/RanchariaLogin.png");
+  background-size: cover;
 }
 </style>

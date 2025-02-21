@@ -1,11 +1,11 @@
 <template>
-    <footer class="footer-connectOn">
+    <footer class="footer-rancharia">
       <p>@AtenaAgência</p>
     </footer>
   </template>
   
   <style scoped>
-  .footer-connectOn {
+  .footer-rancharia {
     position: fixed;  
     bottom: 0;        
     left: 0;          

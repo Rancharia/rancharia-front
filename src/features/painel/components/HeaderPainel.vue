@@ -1,7 +1,7 @@
 <template>
-    <header class="header-connectOn">
-        <ion-icon @click="ExecutarMenuLateral" :icon="menu" class="menu icon"></ion-icon>
-        <img class="logo-header" src="../../../../public/RanchariaLogoPetro.png" alt="">
+    <header class="header-rancharia">
+        <ion-icon :icon="menu" class="menu icon"></ion-icon>
+        <img class="logo-header" src="@/assets/logo/RanchariaLogoPetro.png" alt="">
         <div class="icones-direita">
             <ion-icon :icon="notifications" class="icon sino"></ion-icon>
             <ion-icon :icon="person" class="icon person"></ion-icon>
@@ -10,21 +10,14 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
 import { IonIcon } from '@ionic/vue';
 import { person, menu, notifications } from 'ionicons/icons';
 
-defineProps({
-    ExecutarMenuLateral:{
-        type: Function,
-        required: true
-    }
-})
-
 </script>
 <style scoped>
-.header-connectOn{
-    z-index: 2;
+.header-rancharia{
+    position: absolute;
+    width: 100%;
     padding: 0px 40px;
     align-items: center;
     justify-content: space-between;
