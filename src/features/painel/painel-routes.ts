@@ -12,6 +12,12 @@ const painelRoutes: Array<RouteRecordRaw> = [
         component: () =>
           import("../painel/pages/Inicio/InicioPainel.vue"),
       },
+      {
+        path: "pedidos",
+        name: "pedidos",
+        component: () => 
+          import("../painel/pages/Pedidos/Pedidos.vue")
+      }
     ],
   },
   
