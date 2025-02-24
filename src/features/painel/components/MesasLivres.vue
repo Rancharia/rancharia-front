@@ -1,5 +1,5 @@
 <template>
-    <div class="pedido-aberto">
+    <div class="mesa-livre">
         <h1>
             {{ numerodaMesa }}
         </h1>
@@ -16,7 +16,7 @@ defineProps({
 </script>
 
 <style scoped>
-.pedido-aberto{
+.mesa-livre{
     background-color: #6E6E6C;
     width: 109px;
     height: 109px;
@@ -26,7 +26,11 @@ defineProps({
     cursor: pointer;
 }
 
-.pedido-aberto h1{
+.mesa-livre:hover{
+    background-color: #5D5D5C;
+
+}
+.mesa-livre h1{
     margin: 0;
     font-weight: 300;
     font-size: 35px;

@@ -16,6 +16,14 @@
                 <PedidosAndamento numeroDoPedido="02" />
                 <PedidosAndamento numeroDoPedido="03" />
                 <PedidosAndamento numeroDoPedido="04" />
+                <PedidosAndamento numeroDoPedido="05" />
+                <PedidosAndamento numeroDoPedido="06" />
+                <PedidosAndamento numeroDoPedido="07" />
+                <PedidosAndamento numeroDoPedido="08" />
+                <PedidosAndamento numeroDoPedido="09" />
+                <PedidosAndamento numeroDoPedido="10" />
+                <PedidosAndamento numeroDoPedido="11" />
+                <PedidosAndamento numeroDoPedido="12" />
             </div>
         </div>
         <div class="mesas-livres">

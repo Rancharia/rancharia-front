@@ -1,6 +1,6 @@
 .pedidos{
     font-family: Poppins;
-    padding-bottom: 26px;
+    padding-bottom: 161px;
     margin-right: 35px;
     padding-top: 135px;
     margin-left: 35px;
@@ -30,6 +30,7 @@
     background-color: transparent;
     outline: none;
     border: none;
+    font-size: 13px;
 }
 .pesquisa input::placeholder {
     color: #6E6E6C;
@@ -65,11 +66,16 @@
     margin-bottom: 9px;
     margin-bottom: 9px;
 }
-.mesas-livres-grid{
-    display: flex;
-    gap: 20px;
-}
+
 .pedidos-em-andamento-grid{
+    flex-wrap: wrap;
     display: flex;
     gap: 20px;
 }
+
+.mesas-livres-grid {
+    flex-wrap: wrap;
+    display: flex;
+    gap: 20px;
+}
+

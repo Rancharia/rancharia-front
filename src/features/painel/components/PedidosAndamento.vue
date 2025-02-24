@@ -7,6 +7,8 @@
 </template>
 
 <script setup>
+
+
 defineProps({
     numeroDoPedido:{
         required: true,
@@ -31,7 +33,10 @@ defineProps({
     font-weight: 300;
     font-size: 35px;
     color: white;
+}
 
+.pedido-aberto:hover{
+    background-color: #B97213;
 }
 
 </style>
