@@ -35,6 +35,15 @@ defineProps({
     border: 4px solid #CE821D;
 }
 
+.option:hover{
+    background-color: #CE821D;
+    color: white
+}
+
+.option:hover .icon{
+    color: white
+}
+
 .option p {
     margin: 0;
 }
