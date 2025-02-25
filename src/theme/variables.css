@@ -1,2 +1,9 @@
 /* For information on how to create your own theme, please see:
 http://ionicframework.com/docs/theming/ */
+
+:root{
+    --background: #F5F5F5;
+    --primary: #CE821D;
+    --secondary: #AC6200;
+    -primary-gray: #F3F3F3;
+}
