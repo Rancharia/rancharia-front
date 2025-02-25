@@ -78,4 +78,8 @@
     display: flex;
     gap: 20px;
 }
-
+.botoes {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+}
