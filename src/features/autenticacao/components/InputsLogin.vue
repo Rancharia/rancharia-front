@@ -6,6 +6,8 @@
         <input
           class="input-login"
           :placeholder="NomePlaceholder"
+          @input="$emit('update:valorInput', $event.target.value)"
+          :value="valorInput"
         />
       </div>
     </div>
@@ -24,8 +26,13 @@
       type: String,
       required: true,
     },
+    valorInput:{
+      required: true,
+      type: String
+    },
   });
   
+  defineEmits(['update:valorInput'])
   </script>
   
   <style scoped>
@@ -40,8 +47,8 @@
     width: 100%;
   }
   .icon {
-    width: 13px;
-    height: 14px;
+    width: 18px;
+    height: 19px;
     margin-right: 10px;
   }
   .input-login {

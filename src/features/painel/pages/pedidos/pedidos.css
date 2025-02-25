@@ -1,0 +1,81 @@
+.pedidos{
+    font-family: Poppins;
+    padding-bottom: 161px;
+    margin-right: 35px;
+    padding-top: 135px;
+    margin-left: 35px;
+}
+
+.pesquisa {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #AC6200;
+}
+.pesquisa h1 {
+    color: #CE821D;
+    font-size: 18px;
+    margin-bottom: 12px;
+    font-weight: 600;;
+}
+
+.icon-pesquisa {
+    width: 20px;
+    height: 20px;
+    margin-left: 15px;
+    margin-right: 8px;
+}
+
+.pesquisa input {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    font-size: 13px;
+}
+.pesquisa input::placeholder {
+    color: #6E6E6C;
+    font-size: 13px;
+    font-weight: 300;
+    opacity: 1;
+}
+
+.pesquisar-pedidos{
+    height: 40px;
+    width: 380px;
+    background-color: #F3F3F3;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.pedidos-em-andamento h1{
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 9px;
+    margin: 0;
+    margin-top: 15px;
+    margin-bottom: 9px;
+}
+.pedidos-em-andamento {
+    margin-bottom: 30px;
+}
+.mesas-livres h1{
+    margin: 0;
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 9px;
+    margin-bottom: 9px;
+}
+
+.pedidos-em-andamento-grid{
+    flex-wrap: wrap;
+    display: flex;
+    gap: 20px;
+}
+
+.mesas-livres-grid {
+    flex-wrap: wrap;
+    display: flex;
+    gap: 20px;
+}
+
