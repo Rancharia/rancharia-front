@@ -10,7 +10,7 @@ const painelRoutes: Array<RouteRecordRaw> = [
         path: "inicio",
         name: "inicio",
         component: () =>
-          import("@/features/painel/pages/inicio/InicioPainel.vue"),
+          import("@features/painel/pages/Inicio/InicioPainel.vue"),
       },
       {
         path: "pedidos",
