@@ -47,4 +47,4 @@ import { IonIcon } from '@ionic/vue';
 import { search } from 'ionicons/icons';
 </script>
 
-<style src="/src/features/painel/pages/Pedidos/pedidos.css"></style>
+<style src="./pedidos.css"></style>

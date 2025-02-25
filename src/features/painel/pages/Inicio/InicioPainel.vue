@@ -20,4 +20,4 @@ const irParaPedidos = () => {
 }
 </script>
 
-<style src="/src/features/painel/pages/Inicio/iniciopainel.css"></style>
+<style src="./iniciopainel.css"></style>
