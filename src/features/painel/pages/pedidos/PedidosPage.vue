@@ -12,13 +12,7 @@
         <h1>Pedidos em andamento</h1>
       </div>
       <div class="pedidos-em-andamento-grid">
-        <PedidosAndamento @click="openModal" numeroDoPedido="01" />
-        <PedidosAndamento @click="openModal" numeroDoPedido="02" />
-        <PedidosAndamento @click="openModal" numeroDoPedido="03" />
-        <PedidosAndamento @click="openModal" numeroDoPedido="04" />
-        <PedidosAndamento @click="openModal" numeroDoPedido="05" />
-        <PedidosAndamento @click="openModal" numeroDoPedido="06" />
-        <PedidosAndamento @click="openModal" numeroDoPedido="07" />
+        <PedidosAndamento  v-for="(mesa, index) in mesas" :key="index" @click="openModal" :numeroDoPedido="mesa" />
       </div>
     </div>
     <div class="mesas-livres">
@@ -26,10 +20,7 @@
         <h1>Mesas/ Comandas livres</h1>
       </div>
       <div class="mesas-livres-grid">
-        <MesasLivres numerodaMesa="01" />
-        <MesasLivres numerodaMesa="02" />
-        <MesasLivres numerodaMesa="03" />
-        <MesasLivres numerodaMesa="04" />
+        <MesasLivres v-for="(mesasLivres, index) in mesasLivres" :key="index" :numerodaMesa="mesasLivres" />
       </div>
       <div class="botoes">
       </div>
@@ -44,6 +35,10 @@ import { IonIcon } from "@ionic/vue";
 import { search } from "ionicons/icons";
 import { modalController  } from "@ionic/vue";
 import PedidosModal from "../../components/PedidosModal.vue";
+import { ref } from "vue";
+
+const mesas = ref([1,2,3,4,5,6,7])
+const mesasLivres = ref([1,2,3,4,5,6,7,8,9,10])
 
 const openModal = async () => {
   const modal = await modalController.create({

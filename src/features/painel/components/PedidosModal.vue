@@ -2,6 +2,7 @@
   <ion-header>
     <div class="mesas-comandas">
       <h1>Mesa/ Comandas</h1>
+      <ion-icon @click="cancel" class="close-icon" :icon="closeCircle" />
     </div>
     <div class="descricao-pedido-modal">
       <div class="left-pedidos">
@@ -46,18 +47,20 @@
 <script lang="ts" setup>
 import { IonContent, IonHeader, modalController } from "@ionic/vue";
 import { IonIcon } from "@ionic/vue";
-import { fastFood, search, arrowBack, informationCircle } from "ionicons/icons";
+import { fastFood, search, arrowBack, informationCircle, closeCircle } from "ionicons/icons";
 
 const cancel = () => modalController.dismiss(null, "cancel");
 </script>
 
 <style scoped>
 .mesas-comandas {
+  align-items: center;
+  justify-content: space-between;
   background-color: #f3f3f3;
   display: flex;
+  padding: 7px 14px 6px 14px;
 }
 .mesas-comandas h1 {
-  padding: 7px 0px 6px 14px;
   margin: 0;
   font-weight: 600;
   font-size: 12px;
@@ -189,5 +192,11 @@ footer div {
   color: #ac6200;
   width: 30px;
   height: 30px;
+}
+.close-icon{
+  color: #6E6E6C;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
 }
 </style>
