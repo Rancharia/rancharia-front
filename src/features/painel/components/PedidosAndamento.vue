@@ -12,7 +12,7 @@
 defineProps({
     numeroDoPedido:{
         required: true,
-        type: String,
+        type: Number,
     }
 })
 </script>

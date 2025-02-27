@@ -6,7 +6,7 @@
     </div>
     <div class="descricao-pedido-modal">
       <div class="left-pedidos">
-        <div><h1 class="numero-mesa">01</h1></div>
+        <div><h1 class="numero-mesa">0{{ numeroMesa }}</h1></div>
         <div class="registro-pedido">
           <p>pedido n <span class="numero-pedido">0001</span></p>
           <p>iniciado em 25/02/2025</p>
@@ -28,28 +28,74 @@
   </ion-header>
   <ion-content>
     <div class="conteudo-modal">
-      <div class="left-conteudo"></div>
+      <div class="left-conteudo">
+        <div class="left-container">
+          <div class="left-opcoes">
+            <ion-icon class="person-icon-modal" :icon="person" />
+            <p>Vincular cliente</p>
+          </div>
+          <div class="left-opcoes">
+            <ion-icon class="menu-icon-modal" :icon="menu" />
+            <p>Mais opções</p>
+          </div>
+        </div>
+      </div>
       <div class="right-conteudo">
-        <div class="nenhum-item">
+        <div v-if="contemPedidos" class="pedidos-em-andamento">
+          <ExibicaoPedidos />
+        </div>
+        <div class="nenhum-item" v-if="!contemPedidos">
           <ion-icon class="icon-i" :icon="informationCircle" />
-          <P>Nenhum item lançado</P>
+          <p>Nenhum item lançado</p>
         </div>
       </div>
     </div>
-      <footer>
-        <div @click="cancel">
-          <ion-icon class="icon-voltar" :icon="arrowBack" /><span>Voltar</span>
+    <footer>
+      <div @click="cancel">
+        <ion-icon class="icon-voltar" :icon="arrowBack" /><span>Voltar</span>
+      </div>
+      <div class="container-botoes">
+        <div class="imprimir">
+          <ion-icon class="icon-print" :icon="print" />
+          <button class="botao-footer">Imprimir</button>
         </div>
-      </footer>
+        <div class="pagamento">
+          <ion-icon class="icon-pagamento" :icon="cash" />
+          <button class="botao-footer">Pagamento</button>
+        </div>
+      </div>
+    </footer>
   </ion-content>
 </template>
 
 <script lang="ts" setup>
+import ExibicaoPedidos from "./ExibicaoPedidos.vue";
 import { IonContent, IonHeader, modalController } from "@ionic/vue";
 import { IonIcon } from "@ionic/vue";
-import { fastFood, search, arrowBack, informationCircle, closeCircle } from "ionicons/icons";
+import { ref } from "vue";
+import {
+  fastFood,
+  search,
+  arrowBack,
+  informationCircle,
+  closeCircle,
+  person,
+  menu,
+  print,
+  cash,
+} from "ionicons/icons";
 
 const cancel = () => modalController.dismiss(null, "cancel");
+
+const contemPedidos = ref(true);
+
+defineProps({
+  numeroMesa: {
+    type: Number,
+    required: true
+  }
+})
+
 </script>
 
 <style scoped>
@@ -142,6 +188,7 @@ footer {
   height: 63px;
   padding-left: 23px;
   display: flex;
+  justify-content: space-between;
 }
 .icon-voltar {
   color: #ac6200;
@@ -163,40 +210,124 @@ footer div {
 .left-conteudo {
   height: 100%;
   width: 197px;
-  background-color: #E4E4E4;
+  background-color: #e4e4e4;
 }
 .right-conteudo {
   height: 100%;
   width: calc(100% - 197px);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
+
 .conteudo-modal {
   font-family: Poppins;
   display: flex;
   height: 100%;
 }
-.nenhum-item{
+.nenhum-item {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
-.nenhum-item p{
+.nenhum-item p {
   color: #6e6e6c;
   margin: 0;
   font-weight: 600;
 }
-.icon-i{
+.icon-i {
   color: #ac6200;
   width: 30px;
   height: 30px;
 }
-.close-icon{
-  color: #6E6E6C;
+.close-icon {
+  color: #6e6e6c;
   width: 20px;
   height: 20px;
   cursor: pointer;
+}
+.left-opcoes {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0px 0px 0px 23px;
+}
+.left-opcoes p {
+  margin: 0;
+  font-weight: 600;
+  color: #6e6e6c;
+  font-size: 12px;
+}
+.person-icon-modal {
+  color: #ac6200;
+  width: 20px;
+  height: 20px;
+}
+.menu-icon-modal {
+  color: #ac6200;
+  width: 20px;
+  height: 20px;
+}
+.left-container {
+  gap: 20px;
+  flex-direction: column;
+  display: flex;
+  position: absolute;
+  bottom: 83px;
+}
+.container-botoes {
+  display: flex;
+  cursor: default;
+  gap: 73px;
+  margin-right: 15px;
+}
+.botao-footer {
+  cursor: pointer;
+  font-family: Poppins;
+  border: none;
+  height: 34px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.imprimir {
+  background-color: transparent;
+  color: #ac6200;
+  border: 2px solid #ac6200;
+  border-radius: 32px;
+  width: 158px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.imprimir button {
+  background-color: transparent;
+  color: #ac6200;
+}
+.pagamento {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 158px;
+  border-radius: 32px;
+  background-color: #ac6200;
+  color: #f3f3f3;
+}
+.pagamento button {
+  background-color: transparent;
+  color: #f3f3f3;
+}
+.pedidos-em-andamento {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
 }
 </style>

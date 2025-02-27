@@ -12,7 +12,7 @@
         <h1>Pedidos em andamento</h1>
       </div>
       <div class="pedidos-em-andamento-grid">
-        <PedidosAndamento  v-for="(mesa, index) in mesas" :key="index" @click="openModal" :numeroDoPedido="mesa" />
+        <PedidosAndamento  v-for="(mesa, index) in mesas" :key="index" @click="openModal(mesa)" :numeroDoPedido="mesa" />
       </div>
     </div>
     <div class="mesas-livres">
@@ -20,7 +20,7 @@
         <h1>Mesas/ Comandas livres</h1>
       </div>
       <div class="mesas-livres-grid">
-        <MesasLivres v-for="(mesasLivres, index) in mesasLivres" :key="index" :numerodaMesa="mesasLivres" />
+        <MesasLivres v-for="(mesaLivres, index) in mesasLivres" :key="index" :numerodaMesa="mesaLivres" />
       </div>
       <div class="botoes">
       </div>
@@ -40,9 +40,12 @@ import { ref } from "vue";
 const mesas = ref([1,2,3,4,5,6,7])
 const mesasLivres = ref([1,2,3,4,5,6,7,8,9,10])
 
-const openModal = async () => {
+const openModal = async (numeroMesa) => {
   const modal = await modalController.create({
     component: PedidosModal,
+    componentProps: {
+      numeroMesa
+    }
   });
   modal.present();
 };

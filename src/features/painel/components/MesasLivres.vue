@@ -10,7 +10,7 @@
 defineProps({
     numerodaMesa:{
         required: true,
-        type: String,
+        type: Number,
     }
 })
 </script>
