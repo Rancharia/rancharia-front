@@ -15,6 +15,7 @@
       <span class="preco">26,00</span>
       <ion-icon class="elipse-exibicao" :icon="ellipsisVertical" />
     </div>
+
     <div class="calculo-pedido">
       <h1 class="subtotal"><span>Subtotal:</span> 26,00</h1>
       <h1 class="total"><span>Total:</span> 26,00</h1>

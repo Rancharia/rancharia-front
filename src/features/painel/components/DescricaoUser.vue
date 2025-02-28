@@ -1,19 +1,32 @@
 <template>
   <div class="descricao-user">
     <div class="opcoes-redirecionamento">
-        <OpcoesRedirecionamento nomeDaRota="Início" :IconProps="home" />
-        <OpcoesRedirecionamento  nomeDaRota="Pedidos" :IconProps="create" />
-        <OpcoesRedirecionamento nomeDaRota="Produtos" :IconProps="fastFood" />
-        <OpcoesRedirecionamento  nomeDaRota="Clientes" :IconProps="person" />
-        <OpcoesRedirecionamento  nomeDaRota="Estoque" :IconProps="grid" />
+      <OpcoesRedirecionamento
+        @click="redirecionar('inicio')"
+        nomeDaRota="Início"
+        :IconProps="home"
+      />
+      <OpcoesRedirecionamento
+        @click="redirecionar('pedidos')"
+        nomeDaRota="Pedidos"
+        :IconProps="create"
+      />
+      <OpcoesRedirecionamento nomeDaRota="Produtos" :IconProps="fastFood" />
+      <OpcoesRedirecionamento nomeDaRota="Clientes" :IconProps="person" />
+      <OpcoesRedirecionamento nomeDaRota="Estoque" :IconProps="grid" />
     </div>
   </div>
 </template>
 
 <script setup>
 import OpcoesRedirecionamento from "./OpcoesRedirecionamento.vue";
+import { home, create, fastFood, person, grid } from "ionicons/icons";
+import { useRouter } from "vue-router";
 
-import { home, create, fastFood, person, grid } from 'ionicons/icons';
+const router = useRouter();
+const redirecionar = (nomeRota) => {
+  router.push({ name: nomeRota });
+};
 
 </script>
 <style scoped>
@@ -33,9 +46,10 @@ import { home, create, fastFood, person, grid } from 'ionicons/icons';
 }
 
 .opcoes-redirecionamento {
-    padding-left: 35px;
+  padding-left: 35px;
   display: flex;
   gap: 20px;
   align-items: center;
 }
+
 </style>

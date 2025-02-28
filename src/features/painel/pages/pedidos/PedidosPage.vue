@@ -22,8 +22,6 @@
       <div class="mesas-livres-grid">
         <MesasLivres v-for="(mesaLivres, index) in mesasLivres" :key="index" :numerodaMesa="mesaLivres" />
       </div>
-      <div class="botoes">
-      </div>
     </div>
   </div>
 </template>

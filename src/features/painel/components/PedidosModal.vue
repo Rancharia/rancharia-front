@@ -6,7 +6,9 @@
     </div>
     <div class="descricao-pedido-modal">
       <div class="left-pedidos">
-        <div><h1 class="numero-mesa">0{{ numeroMesa }}</h1></div>
+        <div>
+          <h1 class="numero-mesa">0{{ numeroMesa }}</h1>
+        </div>
         <div class="registro-pedido">
           <p>pedido n <span class="numero-pedido">0001</span></p>
           <p>iniciado em 25/02/2025</p>
@@ -19,9 +21,9 @@
             placeholder="Buscar número ou nome"
           />
         </div>
-        <div class="produtos-icon">
+        <div @click="openModalProdutos" class="produtos-icon">
           <ion-icon class="icon-fast-food" :icon="fastFood" />
-          <span>Produtos</span>
+          <span class="produtos-modal">Produtos</span>
         </div>
       </div>
     </div>
@@ -57,11 +59,11 @@
       <div class="container-botoes">
         <div class="imprimir">
           <ion-icon class="icon-print" :icon="print" />
-          <button class="botao-footer">Imprimir</button>
+          <p>Imprimir</p>
         </div>
         <div class="pagamento">
           <ion-icon class="icon-pagamento" :icon="cash" />
-          <button class="botao-footer">Pagamento</button>
+          <p>Pagamento</p>
         </div>
       </div>
     </footer>
@@ -72,6 +74,7 @@
 import ExibicaoPedidos from "./ExibicaoPedidos.vue";
 import { IonContent, IonHeader, modalController } from "@ionic/vue";
 import { IonIcon } from "@ionic/vue";
+import ProdutosModal from "./ProdutosModal.vue";
 import { ref } from "vue";
 import {
   fastFood,
@@ -85,17 +88,21 @@ import {
   cash,
 } from "ionicons/icons";
 
-const cancel = () => modalController.dismiss(null, "cancel");
-
-const contemPedidos = ref(true);
-
 defineProps({
   numeroMesa: {
     type: Number,
-    required: true
-  }
-})
+    required: true,
+  },
+});
 
+const openModalProdutos = async () => {
+  const modal = await modalController.create({
+    component: ProdutosModal,
+  });
+  modal.present();
+};
+const cancel = () => modalController.dismiss(null, "cancel");
+const contemPedidos = ref(true);
 </script>
 
 <style scoped>
@@ -148,11 +155,19 @@ defineProps({
   font-weight: 600;
 }
 .produtos-icon {
+  height: 100%;
+  padding: 0px 2px;
   display: flex;
   align-items: center;
   font-size: 12px;
   gap: 10px;
+  cursor: pointer;
 }
+
+.produtos-icon:hover .produtos-modal{
+  color: #ac6200;
+}
+
 .produtos-icon span {
   color: #6e6e6c;
   font-weight: 600;
@@ -176,6 +191,7 @@ defineProps({
   gap: 13px;
 }
 .right-pedidos {
+  height: 100%;
   display: flex;
   align-items: center;
   gap: 26px;
@@ -279,47 +295,43 @@ footer div {
   bottom: 83px;
 }
 .container-botoes {
+  font-family: Poppins;
   display: flex;
   cursor: default;
-  gap: 73px;
+  gap: 72px;
   margin-right: 15px;
-}
-.botao-footer {
-  cursor: pointer;
-  font-family: Poppins;
-  border: none;
-  height: 34px;
-  font-size: 12px;
-  font-weight: 600;
 }
 
 .imprimir {
+  height: 34px;
   background-color: transparent;
   color: #ac6200;
   border: 2px solid #ac6200;
   border-radius: 32px;
-  width: 158px;
+  width: 140px;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.imprimir button {
-  background-color: transparent;
-  color: #ac6200;
 }
 .pagamento {
+  height: 34px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 158px;
+  width: 140px;
   border-radius: 32px;
   background-color: #ac6200;
   color: #f3f3f3;
 }
-.pagamento button {
-  background-color: transparent;
-  color: #f3f3f3;
+
+.pagamento p {
+  font-size: 10px;
 }
+
+.imprimir p {
+  font-size: 10px;
+}
+
 .pedidos-em-andamento {
   display: flex;
   flex-direction: column;
@@ -330,4 +342,17 @@ footer div {
   justify-content: center;
   margin: 0;
 }
+
+.icon-print {
+  width: 20px;
+  height: 20px;
+}
+.icon-pagamento {
+  width: 20px;
+  height: 20px;
+}
+.close-icon:hover{
+  color: #E02727;
+}
+
 </style>
