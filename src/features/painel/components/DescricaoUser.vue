@@ -11,7 +11,11 @@
         nomeDaRota="Pedidos"
         :IconProps="create"
       />
-      <OpcoesRedirecionamento nomeDaRota="Produtos" :IconProps="fastFood" />
+      <OpcoesRedirecionamento
+        @click="redirecionar('produtos')"
+        nomeDaRota="Produtos"
+        :IconProps="fastFood"
+      />
       <OpcoesRedirecionamento nomeDaRota="Clientes" :IconProps="person" />
       <OpcoesRedirecionamento nomeDaRota="Estoque" :IconProps="grid" />
     </div>
@@ -27,10 +31,8 @@ const router = useRouter();
 const redirecionar = (nomeRota) => {
   router.push({ name: nomeRota });
 };
-
 </script>
 <style scoped>
-
 .descricao-user {
   position: absolute;
   width: 100%;
@@ -51,5 +53,4 @@ const redirecionar = (nomeRota) => {
   gap: 20px;
   align-items: center;
 }
-
 </style>

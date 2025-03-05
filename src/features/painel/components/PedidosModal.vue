@@ -101,6 +101,7 @@ const openModalProdutos = async () => {
   });
   modal.present();
 };
+
 const cancel = () => modalController.dismiss(null, "cancel");
 const contemPedidos = ref(true);
 </script>

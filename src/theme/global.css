@@ -2,4 +2,8 @@ body {
     font-family: 'Poppins', Arial;
     background-color: #FFFFFF;
 }
-  
+
+.modal-produtos{
+    --height: 525px;
+    --width: 800px;
+}

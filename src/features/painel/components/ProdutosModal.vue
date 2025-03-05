@@ -33,8 +33,6 @@
         <th><ion-icon class="icon-list" :icon="listOutline" /></th>
       </tr>
         </tbody>
-      
-     
     </table>
   </ion-content>
 </template>
@@ -141,5 +139,6 @@ const produtos = [1, 2, 3, 4, 5];
 .close-icon:hover{
   color: #E02727;
 }
+
 
 </style>

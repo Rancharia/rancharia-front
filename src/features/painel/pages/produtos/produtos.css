@@ -1,0 +1,110 @@
+.container-principal{
+    font-family: Poppins, "Arial";
+    margin-top: 157px;
+    width: 100vw;
+    padding: 0 35px 0 35px;
+}
+.container-principal h1{
+   color: #AC6200;
+   font-weight: 600;
+   margin: 0;
+
+}
+.opcao-tabela{
+    cursor: pointer;
+    gap: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.opcao-tabela:hover h2{
+    color: #AC6200;
+}
+.opcao-tabela h2{
+    margin: 0;
+    color: #6E6E6C;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.icon-produtos{
+    color: #AC6200;
+    width: 20px;
+    height: 20px;
+}
+
+.opcoes-geral-tabela{
+    display: flex;
+    gap: 59px;
+    padding-right: 30px;
+}
+
+.input-produto {
+    display: flex;
+    align-items: center;
+    background-color: #F3F3F3;
+    width: 380px;
+    height: 40px;
+    border-radius: 15px;
+    padding: 0 10px;
+    gap: 8px; 
+}
+
+.input-produto input {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    font-size: 13px;
+}
+
+.search-produto {
+    font-size: 20px; 
+}
+
+.search-produto{
+    color: black;
+    width: 20px;
+    padding-right: 8px;
+    padding-left: 14px;
+    height: 20px;
+}
+.itens-tabela{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    padding: 12px 0px 30px;
+    border-bottom: 1px solid #AC6200;
+    margin-bottom: 14px;
+}
+.head-tabela{
+    width: 100%;
+    background-color: #AC6200;
+    color: white;
+    font-size: 10px;
+    height: 24px;
+}
+
+.tabela-produtos{
+    width: 100%;
+    padding: 0px 10px 0 10px;
+}
+.corpo-tabela{
+    border: 1px solid #AC6200;
+}
+.corpo-tabela tr th{
+    font-weight: normal;
+    font-size: 10px;
+}
+.container-tabela{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.celula{
+    border: 1px solid #AC6200;
+}
