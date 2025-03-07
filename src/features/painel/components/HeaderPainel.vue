@@ -1,6 +1,5 @@
 <template>
     <header class="header-rancharia">
-        <ion-icon :icon="menu" class="menu icon"></ion-icon>
         <img class="logo-header" src="@/assets/logo/RanchariaLogoPetro.png" alt="">
         <div class="icones-direita">
             <ion-icon :icon="notifications" class="icon sino"></ion-icon>
@@ -11,7 +10,7 @@
 
 <script setup>
 import { IonIcon } from '@ionic/vue';
-import { person, menu, notifications } from 'ionicons/icons';
+import { person, notifications } from 'ionicons/icons';
 
 </script>
 <style scoped>
@@ -29,9 +28,6 @@ import { person, menu, notifications } from 'ionicons/icons';
 .logo-header{
     width: 170px;
     height: 36px;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%);
 }
 
 .icon{
@@ -56,4 +52,5 @@ import { person, menu, notifications } from 'ionicons/icons';
     display: flex;
     gap: 20px;
 }
+
 </style>
