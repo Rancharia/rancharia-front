@@ -21,4 +21,4 @@ const toInicio = () => {
 }
 </script>
 
-<style src="/src/features/autenticacao/pages/login/login.css"></style>
+<style src="./login.css"></style>

@@ -27,12 +27,12 @@
 </template>
 
 <script setup>
-import MesasLivres from "../../components/MesasLivres.vue";
-import PedidosAndamento from "../../components/PedidosAndamento.vue";
+import MesasLivres from "./components/MesasLivres.vue";
+import PedidosAndamento from "./components/PedidosAndamento.vue";
 import { IonIcon } from "@ionic/vue";
 import { search } from "ionicons/icons";
 import { modalController  } from "@ionic/vue";
-import PedidosModal from "../../components/PedidosModal.vue";
+import PedidosModal from "./components/PedidosModal.vue";
 import { ref } from "vue";
 
 const mesas = ref([1,2,3,4,5,6,7])

@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
-import autenticacaoRoutes from "@/features/autenticacao/autenticacao-routes";
-import painelRoutes from '@/features/painel/painel-routes';
+import autenticacaoRoutes from "@/views/autenticacao/autenticacao-routes";
+import painelRoutes from '@/views/painel/painel-routes';
 
 const routes: Array<RouteRecordRaw> = [
     ...autenticacaoRoutes,

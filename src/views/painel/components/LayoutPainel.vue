@@ -11,7 +11,7 @@
 
 <script setup>
 import { IonContent, IonPage } from "@ionic/vue";
-import HeaderPainel from "../components/HeaderPainel.vue";
+import HeaderPainel from "./HeaderPainel.vue";
 import DescricaoUser from "./DescricaoUser.vue";
 import FooterPainel from "./FooterPainel.vue";
 </script>

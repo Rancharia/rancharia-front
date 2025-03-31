@@ -61,12 +61,12 @@
 
 <script lang="ts" setup>
 import Estoque from "./Estoque.vue";
-import MaisDetalhes from "../components/MaisDetalhes.vue";
-import InputsProduto from "../components/InputsProduto.vue";
+import MaisDetalhes from "./MaisDetalhes.vue";
+import InputsProduto from "./InputsProduto.vue";
 import { IonContent, IonHeader, modalController } from "@ionic/vue";
 import { IonIcon } from "@ionic/vue";
 import { arrowBack, closeCircle, save } from "ionicons/icons";
-import InputsMedida from "../components/InputsMedida.vue";
+import InputsMedida from "./InputsMedida.vue";
 import { ref } from "vue";
 
 defineProps({

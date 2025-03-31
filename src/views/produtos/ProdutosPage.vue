@@ -59,7 +59,7 @@
 <script setup>
 import { modalController } from "@ionic/vue";
 import { IonIcon } from "@ionic/vue";
-import AddProdutoModal from "../../components/AddProdutoModal.vue";
+import AddProdutoModal from "./components/AddProdutoModal.vue";
 import { add, pencil, albums, search } from "ionicons/icons";
 
 const produtos = ["produto1","produto2","produto3"]
@@ -72,4 +72,4 @@ const addItemModal = async () => {
 }
 
 </script>
-<style src="/src/features/painel/pages/produtos/produtos.css"></style>
+<style src="./produtos.css"></style>

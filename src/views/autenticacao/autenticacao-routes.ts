@@ -7,13 +7,13 @@ const autenticacaoRoutes: Array<RouteRecordRaw> = [
   {
     path: "/auth",
     component: () =>
-      import("@/features/autenticacao/components/LayoutAutenticacao.vue"),
+      import("@/views/autenticacao/components/LayoutAutenticacao.vue"),
     children: [
       {
         path: "login",
         name: "login",
         component: () =>
-          import("../autenticacao/pages/login/LoginPage.vue"),
+          import("@/views/autenticacao/pages/login/LoginPage.vue"),
       },
     ],
   },
