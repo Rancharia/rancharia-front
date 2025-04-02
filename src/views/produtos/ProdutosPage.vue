@@ -3,8 +3,7 @@
     <h1>Produtos</h1>
     <div class="itens-tabela">
       <div class="input-produto">
-        <IonIcon class="search-produto" :icon="search" />
-        <input placeholder="Buscar número ou nome" type="text" />
+        <AtnInput icon="search" placeholder="Buscar produto" expand='block' />
       </div>
       <div class="opcoes-geral-tabela">
         <div class="opcao-tabela">
@@ -59,8 +58,9 @@
 <script setup>
 import { modalController } from "@ionic/vue";
 import { IonIcon } from "@ionic/vue";
+import { AtnInput } from "atena-core"
 import AddProdutoModal from "./components/AddProdutoModal.vue";
-import { add, pencil, albums, search } from "ionicons/icons";
+import { add, pencil, albums } from "ionicons/icons";
 
 const produtos = ["produto1","produto2","produto3"]
 const addItemModal = async () => {

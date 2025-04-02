@@ -1,24 +1,37 @@
 <template>
-    <InputsLogin v-model:valorInput="user" class="campo-cadastro" NomePlaceholder="CPF ou e-mail" NomeLabel="Prestador de serviço" />
-    <InputsLogin v-model:valorInput="senha" class="campo-senha" NomePlaceholder="Insira sua senha" NomeLabel="Senha"/>
-    <AvisoLogin descricaoAviso="Login ou senha inválidos"/>
-    <ButtonLogin @click="toInicio" class="botao-acesso" NomeBotao="Acessar"/>
+  <AtnInput
+    label="Prestador de serviço"
+    v-model="senha"
+    icon="user"
+    placeholder="CPF ou e-mail"
+    expand="block"
+  />
+  <AtnInput
+    label="Senha"
+    v-model="user"
+    icon="user"
+    placeholder="Insira sua senha"
+    expand="block"
+  />
+  <AtnButton
+    @click="router.push('/painel/inicio')"
+    class="botao-acesso"
+    expand="block"
+    >Acessar</AtnButton
+  >
+
+  {{ senha }}
 </template>
 
 <script setup>
-import AvisoLogin from '../../components/AvisoLogin.vue';
-import ButtonLogin from '../../components/ButtonLogin.vue';
-import InputsLogin from '../../components/InputsLogin.vue';
-import { useRouter } from 'vue-router';
+import { AtnButton } from "atena-core";
+import { AtnInput } from "atena-core";
+import { useRouter } from "vue-router";
 import { ref } from "vue";
 
-const senha = ref("")
-const user = ref("")
-
-const router = useRouter()
-const toInicio = () => {
-    router.push("/painel/inicio")
-}
+const senha = ref("");
+const user = ref("");
+const router = useRouter();
 </script>
 
 <style src="./login.css"></style>

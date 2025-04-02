@@ -3,6 +3,13 @@
   "private": true,
   "version": "0.0.1",
   "type": "module",
+  "main": "dist/atena-core.umd.js",
+  "module": "dist/atena-core.es.js",
+  "types": "dist/types/index.d.ts",
+  "exports": {
+    "import": "./dist/atena-core.es.js",
+    "require": "./dist/atena-core.umd.js"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
@@ -19,6 +26,7 @@
     "@capacitor/status-bar": "7.0.0",
     "@ionic/vue": "^8.0.0",
     "@ionic/vue-router": "^8.0.0",
+    "atena-core": "github:devatena/atena-core#dev",
     "ionicons": "^7.0.0",
     "vue": "^3.3.0",
     "vue-router": "^4.2.0"

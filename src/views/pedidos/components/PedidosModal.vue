@@ -16,10 +16,7 @@
       </div>
       <div class="right-pedidos">
         <div class="input-buscar-pedido">
-          <ion-icon :icon="search" /><input
-            type="text"
-            placeholder="Buscar número ou nome"
-          />
+          <AtnInput icon="search" placeholder="Buscar número ou nome"/>
         </div>
         <div @click="openModalProdutos" class="produtos-icon">
           <ion-icon class="icon-fast-food" :icon="fastFood" />
@@ -58,12 +55,10 @@
       </div>
       <div class="container-botoes">
         <div class="imprimir">
-          <ion-icon class="icon-print" :icon="print" />
-          <p>Imprimir</p>
+          <AtnButton icon="print" expand="block">Imprimir</AtnButton>
         </div>
         <div class="pagamento">
-          <ion-icon class="icon-pagamento" :icon="cash" />
-          <p>Pagamento</p>
+          <AtnButton icon="user" expand="block">Pagamento</AtnButton>
         </div>
       </div>
     </footer>
@@ -71,6 +66,7 @@
 </template>
 
 <script lang="ts" setup>
+import { AtnInput, AtnButton} from "atena-core"
 import ExibicaoPedidos from "./ExibicaoPedidos.vue";
 import { IonContent, IonHeader, modalController } from "@ionic/vue";
 import { IonIcon } from "@ionic/vue";
@@ -78,14 +74,12 @@ import ProdutosModal from "./ProdutosModal.vue";
 import { ref } from "vue";
 import {
   fastFood,
-  search,
   arrowBack,
   informationCircle,
   closeCircle,
   person,
   menu,
   print,
-  cash,
 } from "ionicons/icons";
 
 defineProps({
@@ -181,11 +175,9 @@ const contemPedidos = ref(true);
 .input-buscar-pedido {
   display: flex;
   align-items: center;
-  gap: 10px;
-  background-color: #f3f3f3;
-  border-radius: 15px;
-  padding-left: 15px;
+  width: 240px;
 }
+
 .left-pedidos {
   display: flex;
   align-items: center;
@@ -197,6 +189,7 @@ const contemPedidos = ref(true);
   align-items: center;
   gap: 26px;
 }
+
 footer {
   position: fixed;
   width: 100%;
@@ -304,32 +297,13 @@ footer div {
 }
 
 .imprimir {
-  height: 34px;
-  background-color: transparent;
-  color: #ac6200;
-  border: 2px solid #ac6200;
-  border-radius: 32px;
   width: 140px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 .pagamento {
-  height: 34px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 140px;
-  border-radius: 32px;
-  background-color: #ac6200;
-  color: #f3f3f3;
 }
 
 .pagamento p {
-  font-size: 10px;
-}
-
-.imprimir p {
   font-size: 10px;
 }
 

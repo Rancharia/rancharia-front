@@ -41,23 +41,7 @@
 }
 
 .input-produto {
-    display: flex;
-    align-items: center;
-    background-color: #F3F3F3;
     width: 380px;
-    height: 40px;
-    border-radius: 15px;
-    padding: 0 10px;
-    gap: 8px; 
-}
-
-.input-produto input {
-    width: 100%;
-    height: 100%;
-    background-color: transparent;
-    outline: none;
-    border: none;
-    font-size: 13px;
 }
 
 .search-produto {
@@ -79,6 +63,7 @@
     border-bottom: 1px solid #AC6200;
     margin-bottom: 14px;
 }
+
 .head-tabela{
     width: 100%;
     background-color: #AC6200;

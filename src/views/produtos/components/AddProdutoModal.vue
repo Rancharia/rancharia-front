@@ -17,14 +17,11 @@
           <InputsProduto InputWidth="168px" LabelProps="Preço de custo:" />
           <InputsProduto InputWidth="161px" LabelProps="Preço de venda:" />
           <div class="inputs-radio">
-            <InputsMedida v-model="medidaSelecionada" MedidaProps="UN" TituloProps="Medida:" />
-            <InputsMedida v-model="medidaSelecionada" MedidaProps="KG" />
-            <InputsMedida v-model="medidaSelecionada" MedidaProps="L" />
+            <AtnRadio v-model="medidaSelecionada" optionName="option" :options="optionsMedida" label="Medida:"></AtnRadio>
           </div>
         </div>
         <div class="ativo">
-          <InputsMedida v-model="medidaSelecionada" MedidaProps="Sim" TituloProps="Ativo:" />
-          <InputsMedida v-model="medidaSelecionada" MedidaProps="Não" />
+          <AtnRadio :options="optionsAtivo" optionName="option" v-model="ativo" label="Ativo:"></AtnRadio>
         </div>
       </div>
       <div class="container-border">
@@ -60,14 +57,25 @@
 </template>
 
 <script lang="ts" setup>
+import { AtnRadio } from 'atena-core'
 import Estoque from "./Estoque.vue";
 import MaisDetalhes from "./MaisDetalhes.vue";
 import InputsProduto from "./InputsProduto.vue";
 import { IonContent, IonHeader, modalController } from "@ionic/vue";
 import { IonIcon } from "@ionic/vue";
 import { arrowBack, closeCircle, save } from "ionicons/icons";
-import InputsMedida from "./InputsMedida.vue";
 import { ref } from "vue";
+
+const optionsAtivo = [
+  {value: "Sim", option: "Sim"},
+  {value: "Não", option: "Não"}
+]
+
+const optionsMedida = [
+  {value: "UN", option: "UN"},
+  {value: "KG", option: "KG"},
+  {value: "L", option: "L"}
+]
 
 defineProps({
   numeroMesa: {
@@ -82,6 +90,7 @@ const selecianaAba = (aba: string) => {
 };
 
 const medidaSelecionada = ref('')
+const ativo = ref('')
 const abaSelecionada = ref("detalhes");
 </script>
 

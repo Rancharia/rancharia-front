@@ -2,7 +2,7 @@
     <div class="container-principal-painel">
         <div class="opcoes-painel">
         <OpcaoPainel @click="irParaPedidos('pedidos')" DescricaoOpcao="Pedidos" :iconOption="create" />
-        <OpcaoPainel DescricaoOpcao="Produtos" :iconOption="fastFood" />
+        <OpcaoPainel @click="irParaPedidos('produtos')" DescricaoOpcao="Produtos" :iconOption="fastFood" />
         <OpcaoPainel DescricaoOpcao="Clientes" :iconOption="person" />
         <OpcaoPainel DescricaoOpcao="Estoque" :iconOption="grid" />
     </div>

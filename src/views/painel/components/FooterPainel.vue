@@ -46,6 +46,7 @@
 }
 .nome, .funcao {
     font-weight: 600;
+    color: white;
 }
 
 .line {

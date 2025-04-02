@@ -20,7 +20,7 @@ defineProps({
 </script>
 <style scoped>
 label{
-    color: #6E6E6C;
+    color: #4e4e4e;
     font-size: 11px;
 }
 input{
@@ -33,6 +33,7 @@ input{
     padding-left: 8px;
     font-weight: normal;
 }
+
 div{
     display: flex;
     align-items: center;

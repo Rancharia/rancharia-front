@@ -1,9 +1,15 @@
+@import "../../node_modules/atena-core/dist/atena-core.css";
+
 body {
     font-family: 'Poppins', Arial;
     background-color: #FFFFFF;
 }
 
 .modal-produtos{
-    --height: 535px;
+    --height: 545px;
     --width: 800px;
+}
+
+.modal-pedidos ion-toolbar {
+    --height: 80px; 
 }
