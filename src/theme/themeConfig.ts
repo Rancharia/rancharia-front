@@ -2,8 +2,8 @@ const globalTheme = {
     primary: {
         textColor: "white",
         backgroundColor: "#AC6200",
-        border: "#607848",
-        iconColor: "white",
+        border: "#AC6200",
+        iconColor: "red",
     },
     secondary: {
         textColor: "#607848",

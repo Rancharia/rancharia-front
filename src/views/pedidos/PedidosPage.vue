@@ -56,7 +56,6 @@ const openModal = async (numeroMesa) => {
     componentProps: {
       numeroMesa,
     },
-  
   });
   modal.present();
 };

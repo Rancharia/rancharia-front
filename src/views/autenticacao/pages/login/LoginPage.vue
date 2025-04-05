@@ -1,14 +1,14 @@
 <template>
   <AtnInput
     label="Prestador de serviço"
-    v-model="senha"
     icon="user"
     placeholder="CPF ou e-mail"
+    v-model="user"
     expand="block"
   />
   <AtnInput
+    v-model="senha"
     label="Senha"
-    v-model="user"
     icon="user"
     placeholder="Insira sua senha"
     expand="block"
@@ -19,7 +19,6 @@
     expand="block"
     >Acessar</AtnButton
   >
-
   {{ senha }}
 </template>
 

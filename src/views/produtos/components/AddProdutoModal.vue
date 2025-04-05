@@ -9,19 +9,39 @@
     <div class="conteudo-modal">
       <div class="inputs-adicionar-item">
         <div class="inputs-primeira-linha">
-          <InputsProduto InputWidth="202px" LabelProps="nome:" />
-          <InputsProduto InputWidth="188px" LabelProps="categoria:" />
-          <InputsProduto InputWidth="141px" LabelProps="código:" />
+          <div class="input-width">
+            <AtnInput label="nome" expand="block" />
+          </div>
+          <div class="input-width">
+            <AtnInput label="categoria" expand="block" />
+          </div>
+          <div class="input-width">
+            <AtnInput label="código" expand="block" />
+          </div>
         </div>
         <div class="inputs-segunda-linha">
-          <InputsProduto InputWidth="168px" LabelProps="Preço de custo:" />
-          <InputsProduto InputWidth="161px" LabelProps="Preço de venda:" />
+          <div class="input-width">
+            <AtnInput label="preço de custo" expand="block" />
+          </div>
+          <div class="input-width">
+            <AtnInput label="preço de venda" expand="block" />
+          </div>
           <div class="inputs-radio">
-            <AtnRadio v-model="medidaSelecionada" optionName="option" :options="optionsMedida" label="Medida:"></AtnRadio>
+            <AtnRadio
+              v-model="medidaSelecionada"
+              optionName="option"
+              :options="optionsMedida"
+              label="Medida:"
+            ></AtnRadio>
           </div>
         </div>
         <div class="ativo">
-          <AtnRadio :options="optionsAtivo" optionName="option" v-model="ativo" label="Ativo:"></AtnRadio>
+          <AtnRadio
+            :options="optionsAtivo"
+            optionName="option"
+            v-model="ativo"
+            label="Ativo:"
+          ></AtnRadio>
         </div>
       </div>
       <div class="container-border">
@@ -41,7 +61,7 @@
         </div>
         <div class="mais-detalhes">
           <div v-if="abaSelecionada === 'detalhes'"><MaisDetalhes /></div>
-          <div v-if="abaSelecionada === 'estoque'"><Estoque /></div>
+          <div v-if="abaSelecionada === 'estoque'"><EstoqueProdutos /></div>
         </div>
       </div>
     </div>
@@ -57,25 +77,13 @@
 </template>
 
 <script lang="ts" setup>
-import { AtnRadio } from 'atena-core'
-import Estoque from "./Estoque.vue";
+import { AtnRadio, AtnInput } from "atena-core";
+import EstoqueProdutos from "./EstoqueProdutos.vue";
 import MaisDetalhes from "./MaisDetalhes.vue";
-import InputsProduto from "./InputsProduto.vue";
 import { IonContent, IonHeader, modalController } from "@ionic/vue";
 import { IonIcon } from "@ionic/vue";
 import { arrowBack, closeCircle, save } from "ionicons/icons";
 import { ref } from "vue";
-
-const optionsAtivo = [
-  {value: "Sim", option: "Sim"},
-  {value: "Não", option: "Não"}
-]
-
-const optionsMedida = [
-  {value: "UN", option: "UN"},
-  {value: "KG", option: "KG"},
-  {value: "L", option: "L"}
-]
 
 defineProps({
   numeroMesa: {
@@ -89,8 +97,19 @@ const selecianaAba = (aba: string) => {
   abaSelecionada.value = aba;
 };
 
-const medidaSelecionada = ref('')
-const ativo = ref('')
+const optionsAtivo = [
+  { value: "Sim", option: "Sim" },
+  { value: "Não", option: "Não" },
+];
+
+const optionsMedida = [
+  { value: "UN", option: "UN" },
+  { value: "KG", option: "KG" },
+  { value: "L", option: "L" },
+];
+
+const medidaSelecionada = ref("");
+const ativo = ref("");
 const abaSelecionada = ref("detalhes");
 </script>
 
@@ -129,6 +148,8 @@ const abaSelecionada = ref("detalhes");
   flex-direction: column;
   padding-bottom: 14px;
   border-bottom: 1px solid #ac6200;
+  width: 800px;
+  padding: 0 20px 10px;
 }
 
 .inputs-primeira-linha,
@@ -227,5 +248,9 @@ footer div {
 
 .aba.selecionada {
   background-color: #ac6200;
+}
+
+.input-width{
+  width: 237px;
 }
 </style>

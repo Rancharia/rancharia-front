@@ -5,42 +5,50 @@
       <ion-icon @click="cancel" class="close-icon" :icon="closeCircle" />
     </div>
     <div class="buscar-produto">
-        <div class="input-buscar-pedido">
-          <ion-icon :icon="search" /><input
-            type="text"
-            placeholder="Buscar número ou nome"
-          />
-        </div>
+      <AtnInput
+        icon="search"
+        expand="block"
+        placeholder="Buscar número ou nome"
+      ></AtnInput>
     </div>
   </ion-header>
   <ion-content>
     <table class="tabela-pedidos">
-        <thead><tr class="linha-header">
-        <th>Categoria</th>
-        <th>Código</th>
-        <th>Nome do produto</th>
-        <th>Preço de venda</th>
-        <th>Adicionar</th>
-        <th>Personalizar</th>
-      </tr></thead>
-        <tbody>
-            <tr v-for="(produto, index) in produtos" :key="index" class="linha-produto">
-        <th>Marmitas</th>
-        <th>139</th>
-        <th>Marmita Feijoada</th>
-        <th>8,00 - 15,00</th>
-        <th><ion-icon @click="addItem" class="icon-add" :icon="addOutline" /></th>
-        <th><ion-icon class="icon-list" :icon="listOutline" /></th>
-      </tr>
-        </tbody>
+      <thead>
+        <tr class="linha-header">
+          <th>Categoria</th>
+          <th>Código</th>
+          <th>Nome do produto</th>
+          <th>Preço de venda</th>
+          <th>Adicionar</th>
+          <th>Personalizar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          v-for="(produto, index) in produtos"
+          :key="index"
+          class="linha-produto"
+        >
+          <th>Marmitas</th>
+          <th>139</th>
+          <th>Marmita Feijoada</th>
+          <th>8,00 - 15,00</th>
+          <th>
+            <ion-icon @click="addItem" class="icon-add" :icon="addOutline" />
+          </th>
+          <th><ion-icon class="icon-list" :icon="listOutline" /></th>
+        </tr>
+      </tbody>
     </table>
   </ion-content>
 </template>
 
 <script lang="ts" setup>
+import { AtnInput } from "atena-core";
 import { IonContent, IonHeader, modalController } from "@ionic/vue";
 import { IonIcon } from "@ionic/vue";
-import { search, closeCircle, listOutline, addOutline } from "ionicons/icons";
+import { closeCircle, listOutline, addOutline } from "ionicons/icons";
 
 defineProps({
   numeroMesa: {
@@ -69,22 +77,8 @@ const produtos = [1, 2, 3, 4, 5];
 }
 
 .buscar-produto {
-  height: 51px;
-  padding: 0px 14px 0px 14px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.buscar-produto input {
-  width: 100%;
-  height: 40px;
-  border: none;
-  outline: none;
-  background-color: transparent;
-  font-size: 12px;
-  padding-right: 20px;
+  margin-left: 20px;
+  width: 250px;
 }
 
 .input-buscar-pedido {
@@ -109,11 +103,10 @@ const produtos = [1, 2, 3, 4, 5];
   width: 100%;
   border-left: 1px solid #c0bbbb;
   border-right: 1px solid #c0bbbb;
-
 }
-.linha-produto{
-    height: 25px;
-    border-bottom: 1px solid #c0bbbb;
+.linha-produto {
+  height: 25px;
+  border-bottom: 1px solid #c0bbbb;
 }
 .linha-header {
   height: 40px;
@@ -136,9 +129,7 @@ const produtos = [1, 2, 3, 4, 5];
 .icon-list:hover {
   color: #ac6200;
 }
-.close-icon:hover{
-  color: #E02727;
+.close-icon:hover {
+  color: #e02727;
 }
-
-
 </style>

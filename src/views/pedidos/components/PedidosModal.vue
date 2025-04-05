@@ -55,10 +55,10 @@
       </div>
       <div class="container-botoes">
         <div class="imprimir">
-          <AtnButton icon="print" expand="block">Imprimir</AtnButton>
+          <AtnButton type="primary" icon="print" expand="block">Imprimir</AtnButton>
         </div>
         <div class="pagamento">
-          <AtnButton icon="user" expand="block">Pagamento</AtnButton>
+          <AtnButton type="primary" icon="user" expand="block">Pagamento</AtnButton>
         </div>
       </div>
     </footer>
@@ -79,7 +79,6 @@ import {
   closeCircle,
   person,
   menu,
-  print,
 } from "ionicons/icons";
 
 defineProps({

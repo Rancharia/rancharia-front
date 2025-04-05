@@ -1,8 +1,8 @@
 <template>
     <div class="container-principal-painel">
         <div class="opcoes-painel">
-        <OpcaoPainel @click="irParaPedidos('pedidos')" DescricaoOpcao="Pedidos" :iconOption="create" />
-        <OpcaoPainel @click="irParaPedidos('produtos')" DescricaoOpcao="Produtos" :iconOption="fastFood" />
+        <OpcaoPainel @click="router.push('pedidos')" DescricaoOpcao="Pedidos" :iconOption="create" />
+        <OpcaoPainel @click="router.push('produtos')" DescricaoOpcao="Produtos" :iconOption="fastFood" />
         <OpcaoPainel DescricaoOpcao="Clientes" :iconOption="person" />
         <OpcaoPainel DescricaoOpcao="Estoque" :iconOption="grid" />
     </div>
@@ -15,9 +15,7 @@ import { create, fastFood, person, grid } from 'ionicons/icons';
 import OpcaoPainel from '../../components/OpcaoPainel.vue';
 
 const router = useRouter()
-const irParaPedidos = (nomeRota) => {
-    router.push({ name: nomeRota })
-}
+
 </script>
 
 <style src="./iniciopainel.css"></style>
