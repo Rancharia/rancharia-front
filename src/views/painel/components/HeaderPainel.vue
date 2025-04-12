@@ -2,6 +2,7 @@
     <header class="header-rancharia">
         <img class="logo-header" src="@/assets/logo/RanchariaLogoPetro.png" alt="">
         <div class="icones-direita">
+            <ion-icon @click="fetchLogout" :icon="arrowBack" class="icon sino"></ion-icon>
             <ion-icon :icon="notifications" class="icon sino"></ion-icon>
             <ion-icon :icon="person" class="icon person"></ion-icon>
         </div>
@@ -10,7 +11,21 @@
 
 <script setup>
 import { IonIcon } from '@ionic/vue';
-import { person, notifications } from 'ionicons/icons';
+import { person, notifications, arrowBack } from 'ionicons/icons';
+import { useLogoutStore } from '@/store/logoutStore';
+
+import { useRouter } from 'vue-router';
+const router = useRouter();
+
+const fetchLogout = async () => {
+    try{
+        await useLogoutStore().userLogout()
+        router.push({ name: "login" });
+    }
+    catch (error) {
+        console.log("Falha no logout:", error);
+    }
+};
 
 </script>
 <style scoped>

@@ -1,5 +1,5 @@
 import api from "../boot/axiosConfig";
-import { ILogin } from "../interfaces/userInterface";
+import { ILogin } from "@/interfaces/loginInterface";
 
 export const login = async (formLoginData: ILogin) => {
   try {

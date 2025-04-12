@@ -19,6 +19,7 @@
 
 <script setup>
 import { camera } from "ionicons/icons";
+import { IonIcon } from "@ionic/vue";
 </script>
 
 <style>

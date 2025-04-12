@@ -27,6 +27,7 @@ import { AtnInput } from "atena-core";
 import { ref } from "vue";
 import { useAuthStore } from "@/store/authStore";
 import { useRouter } from "vue-router";
+import { useUserLoggedStore } from "@/store/userLoggedStore";
 
 const router = useRouter();
 
@@ -38,6 +39,8 @@ const userLogin = ref({
 const fetchLogin = async () => {
   try {
     await useAuthStore().userLogin(userLogin.value);
+    await useUserLoggedStore().userLogged()
+    
     router.push({ name: "inicio" });
   } catch (error) {
     console.log("Falha no login:", error);
