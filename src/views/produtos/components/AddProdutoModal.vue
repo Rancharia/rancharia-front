@@ -60,7 +60,7 @@
           </div>
         </div>
         <div class="mais-detalhes">
-          <div v-if="abaSelecionada === 'detalhes'"><MaisDetalhes /></div>
+          <div v-if="abaSelecionada === 'detalhes'"><MaisDetalhes v-model="descricaoArea" /></div>
           <div v-if="abaSelecionada === 'estoque'"><EstoqueProdutos /></div>
         </div>
       </div>
@@ -85,41 +85,13 @@ import MaisDetalhes from "./MaisDetalhes.vue";
 import { IonContent, IonHeader, modalController } from "@ionic/vue";
 import { IonIcon } from "@ionic/vue";
 import { arrowBack, closeCircle, save } from "ionicons/icons";
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { useProductStore } from "@/store/createProductStore";
 
-const produtoData = ref({
-  name: "",
-  category: "",
-  code: "",
-  price_cost: 0,
-  price_sale: 0,
-  measure: "",
-  stock: "",
-  description: "",
-  image: ""
-});
-
-
-const addProduto = async () => {
-  try {
-    useProductStore().createProduct(produtoData.value);
-  } catch (error) {
-    console.error("Erro ao adicionar produto:", error);
-  }
-};
-
-defineProps({
-  numeroMesa: {
-    type: Number
-  },
-});
-
-const cancel = () => modalController.dismiss(null, "cancel");
-
-const selecionaAba = (aba) => {
-  abaSelecionada.value = aba;
-};
+const medidaSelecionada = ref("");
+const ativo = ref("");
+const abaSelecionada = ref("detalhes");
+const descricaoArea = ref("");
 
 const optionsAtivo = [
   { value: "Sim", option: "Sim" },
@@ -132,9 +104,56 @@ const optionsMedida = [
   { value: "L", option: "L" },
 ];
 
-const medidaSelecionada = ref("");
-const ativo = ref("");
-const abaSelecionada = ref("detalhes");
+const produtoData = ref({
+  name: "",
+  category: "",
+  code: "",
+  price_cost: "",
+  price_sale: "",
+  measure: medidaSelecionada.value,
+  stock: 0,
+  description: descricaoArea.value,
+  image: ""
+});
+
+defineProps({
+  numeroMesa: {
+    type: Number
+  },
+});
+
+const addProduto = async () => {
+  try {
+    useProductStore().createProduct(produtoData.value);
+    produtoData.value = {
+      name: "",
+      category: "",
+      code: "",
+      price_cost: "",
+      price_sale: "",
+      measure: "",
+      stock: 0,
+      description: "",
+      image: ""
+    };
+    medidaSelecionada.value = "";
+    ativo.value = "";
+    descricaoArea.value = "";
+  } catch (error) {
+    console.error("Erro ao adicionar produto:", error);
+  }
+};
+
+const selecionaAba = (aba) => {
+  abaSelecionada.value = aba;
+};
+
+const cancel = () => modalController.dismiss(null, "cancel");
+
+watch(medidaSelecionada, (novaMedida) => {
+  produtoData.value.measure = novaMedida;
+});
+
 </script>
 
 <style scoped>

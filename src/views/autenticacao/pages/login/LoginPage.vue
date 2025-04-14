@@ -40,7 +40,6 @@ const fetchLogin = async () => {
   try {
     await useAuthStore().userLogin(userLogin.value);
     await useUserLoggedStore().userLogged()
-    
     router.push({ name: "inicio" });
   } catch (error) {
     console.log("Falha no login:", error);

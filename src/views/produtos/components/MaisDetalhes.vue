@@ -3,6 +3,8 @@
     <div class="area-de-descricao">
       <label for="descricao">Descrição:</label>
       <textarea
+      @input="handleInput"
+      :value="descricao"
         class="text-area-descricao"
         name="descricao"
         id="descricao"
@@ -20,9 +22,29 @@
 <script setup>
 import { camera } from "ionicons/icons";
 import { IonIcon } from "@ionic/vue";
+import { ref, watch } from "vue";
+
+const props = defineProps({
+  modelValue: {
+    type: String,
+    default: "",
+  },
+});
+
+const descricao = ref(props.modelValue);
+const emit = defineEmits(["update:modelValue"]);
+
+const handleInput = (event) => {
+  emit("update:modelValue", event.target.value);
+};
+
+watch(() => props.modelValue, (newVal) => {
+    descricao.value = newVal;
+  });
+
 </script>
 
-<style>
+<style scoped>
 .mais-detalhes {
   gap: 82px;
   width: 762px;
@@ -104,7 +126,8 @@ import { IonIcon } from "@ionic/vue";
 .estoque {
   background-color: #6e6e6c;
 }
-.componente-detalhes{
+.componente-detalhes {
   display: flex;
   gap: 82px;
-}</style>
+}
+</style>

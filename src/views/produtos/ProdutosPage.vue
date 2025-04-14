@@ -1,75 +1,69 @@
 <template>
   <div class="container-principal">
     <h1>Produtos</h1>
-    <div class="itens-tabela">
+    <div class="itens-produto">
       <div class="input-produto">
-        <AtnInput icon="search" placeholder="Buscar produto" expand='block' />
+        <AtnInput icon="search" placeholder="Buscar produto" expand="block" />
       </div>
-      <div class="opcoes-geral-tabela">
-        <div class="opcao-tabela">
+      <div class="opcoes-geral-produto">
+        <div class="opcao-produto">
           <IonIcon class="icon-produtos" :icon="albums" />
           <h2>Estoque</h2>
         </div>
-        <div class="opcao-tabela">
+        <div class="opcao-produto">
           <IonIcon class="icon-produtos" :icon="pencil" />
           <h2>Editar</h2>
         </div>
-        <div @click="addItemModal" class="opcao-tabela">
+        <div @click="addItemModal" class="opcao-produto">
           <IonIcon class="icon-produtos" :icon="add" />
           <h2>Novo</h2>
         </div>
       </div>
     </div>
-    <div class="container-tabela">
-      <table class="tabela-produtos">
-        <thead class="head-tabela">
-          <tr>
-            <th>Código</th>
-            <th>Categoria</th>
-            <th>Nome</th>
-            <th>Preço Custo</th>
-            <th>Preço venda</th>
-            <th>Medida</th>
-            <th>Estoque</th>
-            <th>Sit.estoque</th>
-            <th>Ficha técnica</th>
-            <th>Status venda</th>
-          </tr>
-        </thead>
-        <tbody class="corpo-tabela">
-          <tr v-for="(produto, index) in produtos" :key="index">
-            <th class="celula">ola</th>
-            <th class="celula">ola</th>
-            <th class="celula">ola</th>
-            <th class="celula">ola</th>
-            <th class="celula">ola</th>
-            <th class="celula">ola</th>
-            <th class="celula">ola</th>
-            <th class="celula">ola</th>
-            <th class="celula">ola</th>
-            <th class="celula">ola</th>
-          </tr>
-        </tbody>
-      </table>
+    <div class="container-produto">
+      <CardProduto
+        :name="produto.name"
+        :codigo="produto.code"
+        :categoria="produto.category"
+        :preco="produto.price_cost"
+        v-for="(produto, index) in produtos"
+        :key="index"
+      ></CardProduto>
     </div>
   </div>
 </template>
 
 <script setup>
+import CardProduto from "./components/CardProduto.vue";
 import { modalController } from "@ionic/vue";
 import { IonIcon } from "@ionic/vue";
-import { AtnInput } from "atena-core"
+import { AtnInput } from "atena-core";
 import AddProdutoModal from "./components/AddProdutoModal.vue";
 import { add, pencil, albums } from "ionicons/icons";
+import { onMounted, computed } from "vue";
+import { useProdutoStore } from "@/store/produtoStore";
 
-const produtos = ["produto1","produto2","produto3"]
+const produtoStore = useProdutoStore();
+const produtos = computed(() => produtoStore.produtos);
+
+onMounted(() => {
+  getProdutos();
+});
+
+const getProdutos = async () => {
+  try {
+    await produtoStore.getProdutos();
+  } catch (error) {
+    console.log("Erro ao buscar produtos:", error);
+  }
+};
+
 const addItemModal = async () => {
-    const modal = await modalController.create({
-        component: AddProdutoModal,
-        cssClass: 'modal-produtos',
-    })
-    modal.present()
-}
-
+  const modal = await modalController.create({
+    component: AddProdutoModal,
+    cssClass: "modal-produtos",
+  });
+  modal.present();
+};
 </script>
 <style src="./produtos.css"></style>
