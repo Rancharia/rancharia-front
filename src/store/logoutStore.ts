@@ -1,4 +1,4 @@
-import { logout } from "@/apis/logoutApi"
+import { logout } from "@/apis/authApi"
 import { defineStore } from "pinia"
 
 export const useLogoutStore = defineStore("logout", () => {

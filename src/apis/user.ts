@@ -7,10 +7,10 @@ export const userLoggedFetch = async () => {
         Authorization: `${localStorage.getItem("token")}`,
       },
     });
-    console.log("userLoggedFetch response", response);
+    console.log("userLogged response", response);
     return response;
   } catch (error: any) {
-    console.error("Erro na função userLoggedFetch:", error);
+    console.error("Error:", error);
     return error;
   }
 };
