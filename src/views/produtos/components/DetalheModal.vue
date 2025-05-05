@@ -8,10 +8,7 @@
   <ion-content>
     <div class="detalhes-produto">
         <div class="card-detalhe"> <h1 class="titulo-produto">Nome: <span class="valor-produto">Pirão</span></h1></div>
-        <div class="card-detalhe"> <h1 class="titulo-produto">Nome: <span class="valor-produto">Pirão</span></h1></div>
-        <div class="card-detalhe"> <h1 class="titulo-produto">Nome: <span class="valor-produto">Pirão</span></h1></div>
-        <div class="card-detalhe"> <h1 class="titulo-produto">Nome: <span class="valor-produto">Pirão</span></h1></div>
-        <div class="card-detalhe"> <h1 class="titulo-produto">Nome: <span class="valor-produto">Pirão</span></h1></div>
+  
     </div>
   </ion-content>
 </template>
