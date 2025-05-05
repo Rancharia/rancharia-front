@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
-import { userLoggedFetch } from "@/apis/userLoggedApi";
+import { userLoggedFetch } from "@/apis/user";
 import { IuserLogged } from "@/interfaces/userInterface";
 
 export const useUserLoggedStore = defineStore("user-logged", () => {

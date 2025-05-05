@@ -1,13 +1,13 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
-import { todosProdutosFetch } from "@/apis/TodosProdutosApi";
+import { ProductFetch } from "@/apis/allProducts";
 
 export const useTodosProdutosStore = defineStore("todos-produtos", () => {
     const todosProdutos = ref([]);
     
     const getTodosProdutos = async () => {
         try {
-        const response = await todosProdutosFetch();
+        const response = await ProductFetch();
         todosProdutos.value = response
         return response;
         } catch (error) {

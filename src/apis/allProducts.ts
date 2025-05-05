@@ -11,7 +11,22 @@ export const createProductFetch = async (produto: IProduto) => {
     console.log("response", response);
     return response.data;
   } catch (error: any) {
-    console.error("deu erro:", error);
+    console.error("Error:", error);
+    return error.response?.data || error;
+  }
+};
+
+export const ProductFetch = async () => {
+  try {
+    const response = await api.get("product/all", {
+      headers: {
+        Authorization: `${localStorage.getItem("token")}`,
+      },
+    });
+    console.log("resposta:", response);
+    return response.data;
+  } catch (error: any) {
+    console.error("Error", error);
     return error.response?.data || error;
   }
 };

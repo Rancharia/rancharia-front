@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { IProduto } from "@/interfaces/produtoInterface";
 import { ref } from "vue";
-import { createProductFetch } from "@/apis/createProductApi";
+import { createProductFetch } from "@/apis/allProducts";
 
 export const useProductStore = defineStore("product-store", () => {
     const productData = ref<IProduto | null>(null);
