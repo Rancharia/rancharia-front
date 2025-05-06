@@ -22,6 +22,7 @@
     </div>
     <div class="container-produto">
       <CardProduto
+        @click="productDetails(produto.id)"
         :name="produto.name"
         :codigo="produto.code"
         :categoria="produto.category"
@@ -42,13 +43,43 @@ import AddProdutoModal from "./components/AddProdutoModal.vue";
 import { add, pencil, albums } from "ionicons/icons";
 import { onMounted, computed } from "vue";
 import { useProdutoStore } from "@/store/produtoStore";
+import { useShowProductStore } from "@/store/showProduct";
+import DetalheModal from "./components/DetalheModal.vue";
+import { useEditProductStore } from "@/store/editProduct";
 
+const editProducsStore = useEditProductStore();
+const showProductStore = useShowProductStore();
 const produtoStore = useProdutoStore();
 const produtos = computed(() => produtoStore.produtos);
 
 onMounted(() => {
   getProdutos();
 });
+
+const productDetails = async (id) => {
+  try {
+    const response = await showProductStore.useShowProduct(id);
+
+    const modal = await modalController.create({
+      component: DetalheModal,
+      componentProps: {
+        produto: response, 
+      },
+    });
+
+    modal.onDidDismiss().then(async ({ data, role }) => {
+      if (role === "save" && data) {
+        await editProducsStore.editarProdutos(data, id);
+        await getProdutos();
+      }
+    });
+
+    modal.present();
+  } catch (error) {
+    console.error("Error", error);
+  }
+};
+
 
 const getProdutos = async () => {
   try {

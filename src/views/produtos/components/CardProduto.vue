@@ -1,5 +1,5 @@
 <template>
-  <div @click="openModal" class="card">
+  <div  class="card">
     <div class="container">
       <h1 class="titulo-card">
         <span class="titulo-container">Código:</span> {{ codigo }}
@@ -29,15 +29,6 @@
 <script lang="ts" setup>
 import { IonIcon } from "@ionic/vue";
 import { searchOutline } from "ionicons/icons";
-import { modalController } from "@ionic/vue";
-import DetalheModal from "./DetalheModal.vue";
-
-const openModal = async () => {
-  const modal = await modalController.create({
-    component: DetalheModal,
-  });
-  modal.present();
-};
 
 defineProps({
   name: {
@@ -57,6 +48,7 @@ defineProps({
     required: true,
   },
 });
+
 </script>
 
 <style scoped>

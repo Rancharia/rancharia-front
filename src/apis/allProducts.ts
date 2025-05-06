@@ -29,3 +29,30 @@ export const ProductFetch = async () => {
     return error.response?.data || error;
   }
 };
+
+export const editProduct = async (produto: IProduto, id: number) => {
+  try {
+    const response = await api.put(`/product/edit/${id}`, produto, {
+      headers: {
+        Authorization: `${localStorage.getItem("token")}`,
+      },
+    });
+    return response.data;
+  } catch (error: any) {
+    return error.response?.data || error;
+  }
+}
+
+export const showProduct = async ( id: number) => {
+  try {
+    const response = await api.get(`/product/show/${id}`, {
+      headers: {
+        Authorization: `${localStorage.getItem("token")}`,
+      },
+    });
+    return response.data;
+  } catch (error: any) {
+    console.error("Error:", error);
+    return error.response?.data || error;
+  }
+}
