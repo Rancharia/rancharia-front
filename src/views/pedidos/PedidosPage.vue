@@ -8,7 +8,13 @@
           placeholder="Buscar número ou nome"
           expand="block"
         />
-        <ion-input class="input-pedidos"></ion-input>
+        <ion-item class="campo-input">
+          <ion-input
+            type="password"
+            class="ion-input"
+            placeholder="Buscar número ou nome"
+          ></ion-input>
+        </ion-item>
       </div>
     </div>
     <div class="pedidos-em-andamento">
@@ -53,7 +59,7 @@ const mesasLivres = ref([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 const openModal = async (numeroMesa) => {
   const modal = await modalController.create({
     component: PedidosModal,
-    cssClass: 'modal-pedidos',
+    cssClass: "modal-pedidos",
     componentProps: {
       numeroMesa,
     },
