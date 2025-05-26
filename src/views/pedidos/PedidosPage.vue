@@ -3,15 +3,9 @@
     <div class="pesquisa">
       <h1>Pedidos</h1>
       <div class="pesquisar-pedidos">
-        <AtnInput
-          icon="search"
-          placeholder="Buscar número ou nome"
-          expand="block"
-        />
-        <ion-item class="campo-input">
-          <ion-input
-            type="password"
-            class="ion-input"
+        <ion-item lines="none" >
+          <ion-input 
+            class="ion-input-pedidos"
             placeholder="Buscar número ou nome"
           ></ion-input>
         </ion-item>
@@ -46,7 +40,6 @@
 </template>
 
 <script setup>
-import { AtnInput } from "atena-core";
 import MesasLivres from "./components/MesasLivres.vue";
 import PedidosAndamento from "./components/PedidosAndamento.vue";
 import { modalController } from "@ionic/vue";

@@ -5,11 +5,25 @@ body {
     background-color: #FFFFFF;
 }
 
-.modal-produtos{
+.modal-produtos {
     --height: 635px;
     --width: 800px;
 }
 
 .modal-pedidos ion-toolbar {
-    --height: 80px; 
+    --height: 80px;
 }
+
+.ion-input-pedidos {
+    --background: #ecebeb;
+    --border-radius: 16px;
+    --padding-start: 16px;
+}
+
+.ion-input-pedidos-modal {
+    --background: #ecebeb;
+    --border-radius: 16px;
+    --padding-start: 16px;
+    height: 30px;
+}
+

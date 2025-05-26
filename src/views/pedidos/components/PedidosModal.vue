@@ -16,7 +16,12 @@
       </div>
       <div class="right-pedidos">
         <div class="input-buscar-pedido">
-          <AtnInput icon="search" placeholder="Buscar número ou nome"/>
+          <ion-item lines="none">
+            <ion-input
+              class="ion-input-pedidos-modal"
+              placeholder="Buscar número ou nome"
+            ></ion-input>
+          </ion-item>
         </div>
         <div @click="openModalProdutos" class="produtos-icon">
           <ion-icon class="icon-fast-food" :icon="fastFood" />
@@ -55,10 +60,12 @@
       </div>
       <div class="container-botoes">
         <div class="imprimir">
-          <AtnButton type="primary" icon="print" expand="block">Imprimir</AtnButton>
+          <ion-button class="button-imprimir">Imprimir</ion-button>
         </div>
         <div class="pagamento">
-          <AtnButton type="primary" icon="user" expand="block">Pagamento</AtnButton>
+          <div class="imprimir">
+            <ion-button class="button-pagamento">Pagamento</ion-button>
+          </div>
         </div>
       </div>
     </footer>
@@ -66,7 +73,6 @@
 </template>
 
 <script lang="ts" setup>
-import { AtnInput, AtnButton} from "atena-core"
 import ExibicaoPedidos from "./ExibicaoPedidos.vue";
 import { IonContent, IonHeader, modalController } from "@ionic/vue";
 import { IonIcon } from "@ionic/vue";
@@ -158,7 +164,7 @@ const contemPedidos = ref(true);
   cursor: pointer;
 }
 
-.produtos-icon:hover .produtos-modal{
+.produtos-icon:hover .produtos-modal {
   color: #ac6200;
 }
 
@@ -325,8 +331,14 @@ footer div {
   width: 20px;
   height: 20px;
 }
-.close-icon:hover{
-  color: #E02727;
+.close-icon:hover {
+  color: #e02727;
 }
 
+.button-pagamento, .button-imprimir {
+    --background: #ac6200;
+    width: 100%;
+    --border-radius: 12px;
+    height: 40px;
+}
 </style>

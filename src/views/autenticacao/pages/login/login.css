@@ -10,10 +10,10 @@
     margin-top: 14px;
 }
 
-.input {
+ .input {
     width: 100%;
     --background: #E4E4E4;
     --border-radius: 16px;
     --padding-start: 16px;
     --placeholder-font-weight: 400;
-}
+} 
