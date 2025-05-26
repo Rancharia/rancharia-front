@@ -3,7 +3,12 @@
     <h1>Produtos</h1>
     <div class="itens-produto">
       <div class="input-produto">
-        <AtnInput icon="search" placeholder="Buscar produto" expand="block" />
+        <ion-item lines="none">
+          <ion-input
+            class="ion-input-produtos"
+            placeholder="Buscar número ou nome"
+          ></ion-input>
+        </ion-item>
       </div>
       <div class="opcoes-geral-produto">
         <div class="opcao-produto">
@@ -38,7 +43,6 @@
 import CardProduto from "./components/CardProduto.vue";
 import { modalController } from "@ionic/vue";
 import { IonIcon } from "@ionic/vue";
-import { AtnInput } from "atena-core";
 import AddProdutoModal from "./components/AddProdutoModal.vue";
 import { add, pencil, albums } from "ionicons/icons";
 import { onMounted, computed } from "vue";
@@ -63,7 +67,7 @@ const productDetails = async (id) => {
     const modal = await modalController.create({
       component: DetalheModal,
       componentProps: {
-        produto: response, 
+        produto: response,
       },
     });
 
@@ -79,7 +83,6 @@ const productDetails = async (id) => {
     console.error("Error", error);
   }
 };
-
 
 const getProdutos = async () => {
   try {
