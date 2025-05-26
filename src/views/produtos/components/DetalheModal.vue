@@ -2,7 +2,7 @@
   <ion-header>
     <div class="header-detalhe">
       <h1>Editar Produto</h1>
-      <ion-icon @click="emitCancel" class="close-icon" :icon="closeCircle" />
+      <ion-icon @click="cancel" class="close-icon" :icon="closeCircle" />
     </div>
   </ion-header>
   <ion-content>
@@ -37,7 +37,7 @@ const props = defineProps({
   produto: Object,
 });
 
-const emitCancel = () => modalController.dismiss(null, "cancel");
+const cancel = () => modalController.dismiss(null, "cancel");
 
 const produtoEditavel = ref({ ...props.produto });
 
