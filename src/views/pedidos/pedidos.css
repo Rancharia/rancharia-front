@@ -64,3 +64,11 @@
     gap: 20px;
     margin-top: 10px;
 }
+
+.input-pedidos{
+    --width: 100%;
+    --height: 40px;
+    border-radius: 16px;
+    border: 1px solid #AC6200;
+    --background: #FFF;
+}

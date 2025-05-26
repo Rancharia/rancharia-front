@@ -8,6 +8,7 @@
           placeholder="Buscar número ou nome"
           expand="block"
         />
+        <ion-input class="input-pedidos"></ion-input>
       </div>
     </div>
     <div class="pedidos-em-andamento">
