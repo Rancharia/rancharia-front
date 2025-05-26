@@ -1,29 +1,28 @@
 <template>
   <form @submit.prevent>
-    <AtnInput
-      label="Prestador de serviço"
-      icon="user"
-      placeholder="CPF ou e-mail"
-      v-model="userLogin.username"
-      expand="block"
-    />
-    <AtnInput
-      v-model="userLogin.password"
-      label="Senha"
-      icon="user"
-      placeholder="Insira sua senha"
-      expand="block"
+    <ion-item lines="none" class="campo-item">
+      <ion-icon name="logo-ionic" slot="start"></ion-icon>
+      <ion-input
+        v-model="userLogin.username"
+        class="ion-input"
+        placeholder="Cpf ou e-mail"
+      ></ion-input>
+    </ion-item>
+    <ion-item lines="none" class="campo-item">
+      <ion-icon name="logo-ionic" slot="start"></ion-icon>
+      <ion-input
       type="password"
-    />
-    <AtnButton @click="fetchLogin" class="botao-acesso" expand="block"
-      >Acessar</AtnButton
-    >
+        v-model="userLogin.password"
+        class="ion-input"
+        placeholder="Senha"
+      ></ion-input>
+    </ion-item>
+
+    <ion-button @click="fetchLogin" class="ion-button">Acessar</ion-button>
   </form>
 </template>
 
 <script setup>
-import { AtnButton } from "atena-core";
-import { AtnInput } from "atena-core";
 import { ref } from "vue";
 import { useAuthStore } from "@/store/authStore";
 import { useRouter } from "vue-router";
@@ -39,7 +38,7 @@ const userLogin = ref({
 const fetchLogin = async () => {
   try {
     await useAuthStore().userLogin(userLogin.value);
-    await useUserLoggedStore().userLogged()
+    await useUserLoggedStore().userLogged();
     router.push({ name: "inicio" });
   } catch (error) {
     console.log("Falha no login:", error);
