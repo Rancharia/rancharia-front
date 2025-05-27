@@ -5,7 +5,7 @@
       <ion-icon @click="cancel" class="close-icon" :icon="closeCircle" />
     </div>
     <ion-item lines="none" class="input-container">
-
+      <ion-icon class="icon-list" :icon="searchOutline" />
       <ion-input
         class="ion-input-produtos-modal"
         placeholder="Buscar Produto"
@@ -51,6 +51,7 @@ import {
   closeCircle,
   listOutline,
   addOutline,
+  searchOutline,
 } from "ionicons/icons";
 
 defineProps({
@@ -137,10 +138,13 @@ const produtos = [1, 2, 3, 4, 5];
 }
 
 .ion-input-produtos-modal {
-  --background: #ecebeb;
   --border-radius: 16px;
   --placeholder-font-weight: 300;
   --padding-start: 16px;
+
+}
+.input-container {
   width: 250px;
+  margin-left: 16px;
 }
 </style>
