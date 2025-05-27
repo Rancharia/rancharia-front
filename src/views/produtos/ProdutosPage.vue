@@ -2,14 +2,13 @@
   <div class="container-principal">
     <h1>Produtos</h1>
     <div class="itens-produto">
-      <div class="input-produto">
-        <ion-item lines="none">
-          <ion-input
-            class="ion-input-produtos"
-            placeholder="Buscar número ou nome"
-          ></ion-input>
-        </ion-item>
-      </div>
+      <ion-item lines="none" class="input-container">
+          <IonIcon :icon="searchOutline" />
+        <ion-input
+          class="ion-input-produtos"
+          placeholder="Buscar número ou nome"
+        ></ion-input>
+      </ion-item>
       <div class="opcoes-geral-produto">
         <div class="opcao-produto">
           <IonIcon class="icon-produtos" :icon="albums" />
@@ -44,7 +43,7 @@ import CardProduto from "./components/CardProduto.vue";
 import { modalController } from "@ionic/vue";
 import { IonIcon } from "@ionic/vue";
 import AddProdutoModal from "./components/AddProdutoModal.vue";
-import { add, pencil, albums } from "ionicons/icons";
+import { add, pencil, albums, searchOutline } from "ionicons/icons";
 import { onMounted, computed } from "vue";
 import { useProdutoStore } from "@/store/produtoStore";
 import { useShowProductStore } from "@/store/showProduct";

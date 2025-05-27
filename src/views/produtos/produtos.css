@@ -1,17 +1,17 @@
-.container-principal{
+.container-principal {
     font-family: Poppins, "Arial";
     margin-top: 157px;
     width: 100vw;
     padding: 0 35px 0 35px;
 }
 
-.container-principal h1{
-   color: #AC6200;
-   font-weight: 600;
-   margin: 0;
+.container-principal h1 {
+    color: #AC6200;
+    font-weight: 600;
+    margin: 0;
 }
 
-.opcao-produto{
+.opcao-produto {
     cursor: pointer;
     gap: 22px;
     display: flex;
@@ -19,24 +19,24 @@
     justify-content: center;
 }
 
-.opcao-produto:hover h2{
+.opcao-produto:hover h2 {
     color: #AC6200;
 }
 
-.opcao-produto h2{
+.opcao-produto h2 {
     margin: 0;
     color: #6E6E6C;
     font-size: 17px;
     font-weight: 600;
 }
 
-.icon-produtos{
+.icon-produtos {
     color: #AC6200;
     width: 20px;
     height: 20px;
 }
 
-.opcoes-geral-produto{
+.opcoes-geral-produto {
     display: flex;
     gap: 59px;
     padding-right: 30px;
@@ -47,7 +47,7 @@
 }
 
 .search-produto {
-    font-size: 20px; 
+    font-size: 20px;
 }
 
 .search-produto {
@@ -61,13 +61,13 @@
 .itens-produto {
     display: flex;
     align-items: center;
-    justify-content:space-between;
+    justify-content: space-between;
     padding: 12px 0px 30px;
     border-bottom: 1px solid #AC6200;
     margin-bottom: 14px;
 }
 
-.container-produto{
+.container-produto {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -78,6 +78,14 @@
     --background: #ecebeb;
     --border-radius: 16px;
     --padding-start: 16px;
+    --placeholder-font-weight: 300;
     width: 100%;
     height: 100%;
+}
+
+.input-container {
+    --background: #ecebeb;
+    --border-radius: 16px;
+    --padding-start: 16px;
+    width: 360px;
 }
