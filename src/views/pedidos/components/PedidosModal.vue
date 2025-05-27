@@ -15,14 +15,12 @@
         </div>
       </div>
       <div class="right-pedidos">
-        <div class="input-buscar-pedido">
-          <ion-item lines="none">
-            <ion-input
-              class="ion-input-pedidos-modal"
-              placeholder="Buscar número ou nome"
-            ></ion-input>
-          </ion-item>
-        </div>
+        <ion-item lines="none">
+          <ion-input
+            class="ion-input-pedidos-modal"
+            placeholder="Buscar número ou nome"
+          ></ion-input>
+        </ion-item>
         <div @click="openModalProdutos" class="produtos-icon">
           <ion-icon class="icon-fast-food" :icon="fastFood" />
           <span class="produtos-modal">Produtos</span>
@@ -60,12 +58,20 @@
       </div>
       <div class="container-botoes">
         <div class="imprimir">
-          <ion-button class="button-imprimir">Imprimir</ion-button>
+          <ion-button class="button-imprimir">
+            <ion-icon
+              class="icon-imprimir"
+              :icon="cashOutline"
+            />Imprimir</ion-button
+          >
         </div>
         <div class="pagamento">
-          <div class="imprimir">
-            <ion-button class="button-pagamento">Pagamento</ion-button>
-          </div>
+          <ion-button class="button-pagamento">
+            <ion-icon
+              class="icon-pagamento"
+              :icon="cashOutline"
+            />Pagamento</ion-button
+          >
         </div>
       </div>
     </footer>
@@ -85,6 +91,7 @@ import {
   closeCircle,
   person,
   menu,
+  cashOutline,
 } from "ionicons/icons";
 
 defineProps({
@@ -177,11 +184,6 @@ const contemPedidos = ref(true);
   width: 20px;
   height: 19px;
 }
-.input-buscar-pedido {
-  display: flex;
-  align-items: center;
-  width: 240px;
-}
 
 .left-pedidos {
   display: flex;
@@ -205,11 +207,19 @@ footer {
   display: flex;
   justify-content: space-between;
 }
+
 .icon-voltar {
   color: #ac6200;
   width: 20px;
   height: 20px;
 }
+.icon-pagamento, .icon-imprimir {
+  color: #ffffff;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
 footer span {
   font-family: Poppins;
   color: #6e6e6c;
@@ -301,11 +311,10 @@ footer div {
   margin-right: 15px;
 }
 
-.imprimir {
-  width: 140px;
-}
+.imprimir,
 .pagamento {
-  width: 140px;
+  width: 150px;
+  border-radius: 20px;
 }
 
 .pagamento p {
@@ -330,15 +339,24 @@ footer div {
 .icon-pagamento {
   width: 20px;
   height: 20px;
+  color: #ffffff;
 }
 .close-icon:hover {
   color: #e02727;
 }
 
-.button-pagamento, .button-imprimir {
-    --background: #ac6200;
-    width: 100%;
-    --border-radius: 12px;
-    height: 40px;
+.button-pagamento,
+.button-imprimir {
+  --border-radius: 20px;
+  --background: transparent;
+  --background: #ac6200;
+  width: 100%;
+}
+
+.ion-input-pedidos-modal {
+  --background: #ecebeb;
+  --border-radius: 16px;
+  --placeholder-font-weight: 300;
+  --padding-start: 16px;
 }
 </style>

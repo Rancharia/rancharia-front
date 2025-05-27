@@ -14,16 +14,6 @@ body {
     --height: 80px;
 }
 
-.ion-input-pedidos {
-    --background: #ecebeb;
-    --border-radius: 16px;
-    --padding-start: 16px;
+ion-item {
+  --padding-start: 0;
 }
-
-.ion-input-pedidos-modal {
-    --background: #ecebeb;
-    --border-radius: 16px;
-    --padding-start: 16px;
-    height: 30px;
-}
-

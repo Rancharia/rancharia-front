@@ -2,14 +2,13 @@
   <div class="pedidos">
     <div class="pesquisa">
       <h1>Pedidos</h1>
-      <div class="pesquisar-pedidos">
-        <ion-item lines="none" >
-          <ion-input 
-            class="ion-input-pedidos"
-            placeholder="Buscar número ou nome"
-          ></ion-input>
-        </ion-item>
-      </div>
+      <ion-item class="input-container" lines="none">
+         <ion-icon class="icon-search" :icon="searchOutline" />
+        <ion-input
+          class="ion-input-pedidos"
+          placeholder="Buscar número ou nome"
+        ></ion-input>
+      </ion-item>
     </div>
     <div class="pedidos-em-andamento">
       <div>
@@ -45,6 +44,8 @@ import PedidosAndamento from "./components/PedidosAndamento.vue";
 import { modalController } from "@ionic/vue";
 import PedidosModal from "./components/PedidosModal.vue";
 import { ref } from "vue";
+import { IonIcon } from "@ionic/vue";
+import { searchOutline } from "ionicons/icons";
 
 const mesas = ref([1, 2, 3, 4, 5, 6, 7]);
 const mesasLivres = ref([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
