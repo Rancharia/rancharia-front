@@ -41,7 +41,7 @@
 <script setup>
 import CardProduto from "./components/CardProduto.vue";
 import { modalController } from "@ionic/vue";
-import { IonIcon } from "@ionic/vue";
+import { IonIcon, IonInput, IonItem } from "@ionic/vue";
 import AddProdutoModal from "./components/AddProdutoModal.vue";
 import { add, pencil, albums, searchOutline } from "ionicons/icons";
 import { onMounted, computed } from "vue";

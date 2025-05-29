@@ -48,28 +48,25 @@
             ></ion-input
           ></ion-item>
           <ion-radio-group v-model="medidaSelecionada" class="grupo-medidas">
-            <ion-label>Medidas:</ion-label>
-            <ion-radio slot="start" value="UN" label-placement="end"
-              >UN</ion-radio
-            >
-
-            <ion-radio slot="start" value="KG" label-placement="end"
-              >KG</ion-radio
-            >
-
-            <ion-radio slot="start" value="LG" label-placement="end"
-              >LG</ion-radio
-            >
+              <ion-label>Medidas:</ion-label>
+            <ion-item>
+              <ion-label>UN</ion-label>
+              <ion-radio slot="start" value="UN"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>KG</ion-label>
+              <ion-radio slot="start" value="KG"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>LG</ion-label>
+              <ion-radio slot="start" value="LG"></ion-radio>
+            </ion-item>
           </ion-radio-group>
         </div>
         <ion-radio-group v-model="ativo">
           <ion-label>Ativo:</ion-label>
-          <ion-radio slot="start" value="sim" label-placement="end"
-            >Sim</ion-radio
-          >
-          <ion-radio slot="start" value="nao" label-placement="end"
-            >Não</ion-radio
-          >
+          <ion-radio class="rifhgt" value="sim">Sim</ion-radio>
+          <ion-radio value="nao">Não</ion-radio>
         </ion-radio-group>
       </div>
       <div class="container-border">
@@ -109,7 +106,17 @@
 <script setup>
 import EstoqueProdutos from "./EstoqueProdutos.vue";
 import MaisDetalhes from "./MaisDetalhes.vue";
-import { IonContent, IonHeader, modalController, IonIcon } from "@ionic/vue";
+import {
+  IonContent,
+  IonHeader,
+  modalController,
+  IonIcon,
+  IonInput,
+  IonRadioGroup,
+  IonRadio,
+  IonLabel,
+  IonItem
+} from "@ionic/vue";
 import { arrowBack, closeCircle, save } from "ionicons/icons";
 import { ref, watch } from "vue";
 import { useProductStore } from "@/store/createProductStore";
@@ -317,4 +324,26 @@ ion-item {
   --highlight-height: 0;
   --padding-start: 0;
 }
+
+.grupo-medidas {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+.grupo-medidas ion-label {
+  font-size: 12px;
+}
+
+.radio-container {
+  display: flex;
+  flex-direction: row;
+  gap: 16px; 
+}
+
+ion-radio {
+  --size: 12px; 
+  --color: #ecebeb; 
+  font-size: 14px;
+}
+
 </style>
