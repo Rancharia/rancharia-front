@@ -44,7 +44,7 @@ import PedidosAndamento from "./components/PedidosAndamento.vue";
 import { modalController } from "@ionic/vue";
 import PedidosModal from "./components/PedidosModal.vue";
 import { ref } from "vue";
-import { IonIcon } from "@ionic/vue";
+import { IonIcon, IonInput } from "@ionic/vue";
 import { searchOutline } from "ionicons/icons";
 
 const mesas = ref([1, 2, 3, 4, 5, 6, 7]);

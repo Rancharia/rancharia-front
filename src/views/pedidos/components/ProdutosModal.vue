@@ -46,7 +46,7 @@
 
 <script lang="ts" setup>
 import { IonContent, IonHeader, modalController } from "@ionic/vue";
-import { IonIcon } from "@ionic/vue";
+import { IonIcon, IonInput, IonItem } from "@ionic/vue";
 import {
   closeCircle,
   listOutline,
