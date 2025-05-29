@@ -81,7 +81,7 @@
 <script lang="ts" setup>
 import ExibicaoPedidos from "./ExibicaoPedidos.vue";
 import { IonContent, IonHeader, modalController } from "@ionic/vue";
-import { IonIcon } from "@ionic/vue";
+import { IonIcon, IonButton, IonItem, IonInput } from "@ionic/vue";
 import ProdutosModal from "./ProdutosModal.vue";
 import { ref } from "vue";
 import {
