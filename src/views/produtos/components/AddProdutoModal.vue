@@ -9,55 +9,68 @@
     <div class="conteudo-modal">
       <div class="inputs-adicionar-item">
         <div class="inputs-primeira-linha">
-          <ion-input
-            class="input-novo-produto"
-            label="nome"
-            v-model="produtoData.name"
-          ></ion-input>
-          <ion-input
-            class="input-novo-produto"
-            label="categoria"
-            v-model="produtoData.category"
-          ></ion-input>
-          <ion-input
-            class="input-novo-produto"
-            label="código"
-            v-model="produtoData.code"
-          ></ion-input>
+          <ion-item lines="none">
+            <ion-input
+              class="input-novo-produto"
+              placeholder="nome"
+              v-model="produtoData.name"
+            ></ion-input
+          ></ion-item>
+          <ion-item lines="none">
+            <ion-input
+              class="input-novo-produto"
+              placeholder="categoria"
+              v-model="produtoData.category"
+            ></ion-input
+          ></ion-item>
+          <ion-item lines="none">
+            <ion-input
+              class="input-novo-produto"
+              placeholder="código"
+              v-model="produtoData.code"
+            ></ion-input
+          ></ion-item>
         </div>
+
         <div class="inputs-segunda-linha">
-          <ion-input
-            class="input-novo-produto"
-            label="preço de custo"
-            v-model="produtoData.price_cost"
-          ></ion-input>
-          <ion-input
-            class="input-novo-produto"
-            label="preço de venda"
-            v-model="produtoData.price_sale"
-          ></ion-input>
-          <ion-radio-group
-            allow-empty-selection="true"
-            class="radio-medidas"
-            value="turtles"
-            helper-text="Medida:"
-          >
-            <ion-radio value="cats">UN</ion-radio>
-            <ion-radio value="turtles">KG</ion-radio>
-            <ion-radio value="fish">LG</ion-radio>
+          <ion-item lines="none">
+            <ion-input
+              class="input-novo-produto"
+              placeholder="preço de custo"
+              v-model="produtoData.price_cost"
+            ></ion-input
+          ></ion-item>
+          <ion-item lines="none">
+            <ion-input
+              class="input-novo-produto"
+              placeholder="preço de venda"
+              v-model="produtoData.price_sale"
+            ></ion-input
+          ></ion-item>
+          <ion-radio-group v-model="medidaSelecionada" class="grupo-medidas">
+            <ion-label>Medidas:</ion-label>
+            <ion-radio slot="start" value="UN" label-placement="end"
+              >UN</ion-radio
+            >
+
+            <ion-radio slot="start" value="KG" label-placement="end"
+              >KG</ion-radio
+            >
+
+            <ion-radio slot="start" value="LG" label-placement="end"
+              >LG</ion-radio
+            >
           </ion-radio-group>
         </div>
-        <div class="ativo">
-          <ion-radio-group
-            allow-empty-selection="true"
-            class="radio-medidas"
-            value="turtles"
-            helper-text="Ativo:"
+        <ion-radio-group v-model="ativo">
+          <ion-label>Ativo:</ion-label>
+          <ion-radio slot="start" value="sim" label-placement="end"
+            >Sim</ion-radio
           >
-            <ion-radio value="cats">Sim</ion-radio>
-            <ion-radio value="turtles">Não</ion-radio>
-          </ion-radio-group>
-        </div>
+          <ion-radio slot="start" value="nao" label-placement="end"
+            >Não</ion-radio
+          >
+        </ion-radio-group>
       </div>
       <div class="container-border">
         <div class="container-abas">
@@ -96,8 +109,7 @@
 <script setup>
 import EstoqueProdutos from "./EstoqueProdutos.vue";
 import MaisDetalhes from "./MaisDetalhes.vue";
-import { IonContent, IonHeader, modalController } from "@ionic/vue";
-import { IonIcon } from "@ionic/vue";
+import { IonContent, IonHeader, modalController, IonIcon } from "@ionic/vue";
 import { arrowBack, closeCircle, save } from "ionicons/icons";
 import { ref, watch } from "vue";
 import { useProductStore } from "@/store/createProductStore";
@@ -293,5 +305,16 @@ footer div {
 
 .input-novo-produto {
   width: 240px;
+  --background: #ecebeb;
+  --border-radius: 16px;
+  --padding-start: 16px;
+  --placeholder-font-weight: 300;
+}
+
+ion-item {
+  --border-style: none;
+  --inner-border-width: 0;
+  --highlight-height: 0;
+  --padding-start: 0;
 }
 </style>
