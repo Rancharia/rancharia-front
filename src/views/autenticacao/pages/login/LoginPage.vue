@@ -1,23 +1,22 @@
 <template>
   <form @submit.prevent>
     <ion-item lines="none" class="campo-item">
-      <ion-icon name="logo-ionic" slot="start"></ion-icon>
+      <ion-icon :icon="person" class="icon"></ion-icon>
       <ion-input
         v-model="userLogin.username"
-        class="ion-input"
+        class="ion-input-login"
         placeholder="Cpf ou e-mail"
       ></ion-input>
     </ion-item>
     <ion-item lines="none" class="campo-item">
-      <ion-icon name="logo-ionic" slot="start"></ion-icon>
+          <ion-icon :icon="person" class="icon"></ion-icon>
       <ion-input
       type="password"
         v-model="userLogin.password"
-        class="ion-input"
+        class="ion-input-login"
         placeholder="Senha"
       ></ion-input>
     </ion-item>
-
     <ion-button @click="fetchLogin" class="ion-button">Acessar</ion-button>
   </form>
 </template>
@@ -27,6 +26,8 @@ import { ref } from "vue";
 import { useAuthStore } from "@/store/authStore";
 import { useRouter } from "vue-router";
 import { useUserLoggedStore } from "@/store/userLoggedStore";
+import { IonItem, IonInput, IonButton, IonIcon } from "@ionic/vue";
+import { person } from "ionicons/icons";
 
 const router = useRouter();
 

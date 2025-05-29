@@ -19,10 +19,16 @@ form {
     gap: 10px;
 }
 
-ion-item.campo-item {
-  width: 100%;
-  --background: #E4E4E4;
-  --border-radius: 16px;
-  --padding-start: 16px;
-  --placeholder-font-weight: 400;
+.ion-input-login {
+    width: 100%;
+    --background: #E4E4E4;
+    --border-radius: 16px;
+    --padding-start: 16px;
+    --placeholder-font-weight: 300;
+}
+
+.campo-item {
+    width: 100%;
+    --background: #E4E4E4;
+    --border-radius: 16px;
 }
