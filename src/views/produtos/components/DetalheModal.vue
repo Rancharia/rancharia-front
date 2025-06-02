@@ -9,19 +9,31 @@
     <div class="detalhes-produto">
       <div class="card-detalhe">
         <h1 class="titulo-produto">Nome:</h1>
-        <input type="text" v-model="produtoEditavel.name" />
+        <ion-input
+          v-model="produtoEditavel.name"
+          class="ion-input-edit-produto"
+        ></ion-input>
       </div>
       <div class="card-detalhe">
         <h1 class="titulo-produto">Código:</h1>
-        <input type="text" v-model="produtoEditavel.code" />
+        <ion-input
+          v-model="produtoEditavel.code"
+          class="ion-input-edit-produto"
+        ></ion-input>
       </div>
       <div class="card-detalhe">
         <h1 class="titulo-produto">Categoria:</h1>
-        <input type="text" v-model="produtoEditavel.category" />
+        <ion-input
+          v-model="produtoEditavel.category"
+          class="ion-input-edit-produto"
+        ></ion-input>
       </div>
       <div class="card-detalhe">
         <h1 class="titulo-produto">Preço de venda:</h1>
-        <input type="number" v-model.number="produtoEditavel.price_cost" />
+        <ion-input
+          v-model.number="produtoEditavel.price_cost"
+          class="ion-input-edit-produto"
+        ></ion-input>
       </div>
       <button class="edit-button" @click="salvarEdicao">Salvar</button>
     </div>
@@ -41,9 +53,12 @@ const cancel = () => modalController.dismiss(null, "cancel");
 
 const produtoEditavel = ref({ ...props.produto });
 
-watch(() => props.produto, novo => {
-  produtoEditavel.value = { ...novo };
-});
+watch(
+  () => props.produto,
+  (novo) => {
+    produtoEditavel.value = { ...novo };
+  }
+);
 
 const salvarEdicao = () => {
   modalController.dismiss(produtoEditavel.value, "save");
@@ -51,7 +66,6 @@ const salvarEdicao = () => {
 </script>
 
 <style scoped>
-
 .header-detalhe {
   align-items: center;
   justify-content: space-between;
@@ -76,44 +90,44 @@ const salvarEdicao = () => {
   color: #e02727;
 }
 .titulo-produto {
-    font-size: 16px;
-    margin: 0;
-    padding: 10px 0;
-    font-weight: 600;
+  font-size: 16px;
+  margin: 0;
+  padding: 10px 0;
+  font-weight: 600;
 }
 
 .detalhes-produto {
-    gap: 16px;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .card-detalhe {
-    padding-left: 12px;
-    display: flex;
-    align-items: center;;
-    border: 1px solid #ac6200;
-    border-radius: 10px;
+  padding-left: 12px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ac6200;
+  border-radius: 10px;
 }
 
 .valor-produto {
-    font-size: 16px;
-    margin: 0;
-    padding: 10px 0;
-    font-weight: 600;
-    color: #ac6200;
+  font-size: 16px;
+  margin: 0;
+  padding: 10px 0;
+  font-weight: 600;
+  color: #ac6200;
 }
 
 .edit-button {
-    background-color: #ac6200;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
+  background-color: #ac6200;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
 }
 </style>

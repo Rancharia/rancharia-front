@@ -2,13 +2,15 @@
   <div class="componente-detalhes">
     <div class="area-de-descricao">
       <label for="descricao">Descrição:</label>
-      <textarea
-      @input="handleInput"
-      :value="descricao"
-        class="text-area-descricao"
-        name="descricao"
-        id="descricao"
-      ></textarea>
+      <ion-item
+        ><ion-textarea
+          @input="handleInput"
+          :value="descricao"
+          class="text-area-descricao"
+          name="descricao"
+          id="descricao"
+        ></ion-textarea
+      ></ion-item>
     </div>
     <div class="container-imagem">
       <h2>Imagem</h2>
@@ -38,10 +40,12 @@ const handleInput = (event) => {
   emit("update:modelValue", event.target.value);
 };
 
-watch(() => props.modelValue, (newVal) => {
+watch(
+  () => props.modelValue,
+  (newVal) => {
     descricao.value = newVal;
-  });
-
+  }
+);
 </script>
 
 <style scoped>
@@ -56,17 +60,19 @@ watch(() => props.modelValue, (newVal) => {
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
 }
-.text-area-descricao {
+
+ion-textarea{
   resize: none;
   background-color: #f3f3f3;
   width: 459px;
-  height: 68px;
   border-radius: 15px;
   border: none;
   outline: none;
   font-size: 11px;
-  padding: 10px;
+  padding-left: 10px;
+  --font-weight: 300;
 }
+
 .area-de-descricao {
   gap: 5px;
   display: flex;
@@ -129,5 +135,12 @@ watch(() => props.modelValue, (newVal) => {
 .componente-detalhes {
   display: flex;
   gap: 82px;
+}
+
+ion-item {
+  --border-style: none;
+  --inner-border-width: 0;
+  --highlight-height: 0;
+  --padding-start: 0;
 }
 </style>

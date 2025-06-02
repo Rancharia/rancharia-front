@@ -2,9 +2,13 @@
   <div class="container-principal">
     <h1>Produtos</h1>
     <div class="itens-produto">
-      <div class="input-produto">
-        <AtnInput icon="search" placeholder="Buscar produto" expand="block" />
-      </div>
+      <ion-item lines="none" class="input-container">
+          <IonIcon :icon="searchOutline" />
+        <ion-input
+          class="ion-input-produtos"
+          placeholder="Buscar número ou nome"
+        ></ion-input>
+      </ion-item>
       <div class="opcoes-geral-produto">
         <div class="opcao-produto">
           <IonIcon class="icon-produtos" :icon="albums" />
@@ -37,10 +41,9 @@
 <script setup>
 import CardProduto from "./components/CardProduto.vue";
 import { modalController } from "@ionic/vue";
-import { IonIcon } from "@ionic/vue";
-import { AtnInput } from "atena-core";
+import { IonIcon, IonInput, IonItem } from "@ionic/vue";
 import AddProdutoModal from "./components/AddProdutoModal.vue";
-import { add, pencil, albums } from "ionicons/icons";
+import { add, pencil, albums, searchOutline } from "ionicons/icons";
 import { onMounted, computed } from "vue";
 import { useProdutoStore } from "@/store/produtoStore";
 import { useShowProductStore } from "@/store/showProduct";
@@ -63,7 +66,7 @@ const productDetails = async (id) => {
     const modal = await modalController.create({
       component: DetalheModal,
       componentProps: {
-        produto: response, 
+        produto: response,
       },
     });
 
@@ -79,7 +82,6 @@ const productDetails = async (id) => {
     console.error("Error", error);
   }
 };
-
 
 const getProdutos = async () => {
   try {
