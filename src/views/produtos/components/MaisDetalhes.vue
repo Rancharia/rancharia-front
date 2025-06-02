@@ -2,11 +2,15 @@
   <div class="componente-detalhes">
     <div class="area-de-descricao">
       <label for="descricao">Descrição:</label>
-      <textarea
-        class="text-area-descricao"
-        name="descricao"
-        id="descricao"
-      ></textarea>
+      <ion-item
+        ><ion-textarea
+          @input="handleInput"
+          :value="descricao"
+          class="text-area-descricao"
+          name="descricao"
+          id="descricao"
+        ></ion-textarea
+      ></ion-item>
     </div>
     <div class="container-imagem">
       <h2>Imagem</h2>
@@ -20,9 +24,31 @@
 <script setup>
 import { camera } from "ionicons/icons";
 import { IonIcon } from "@ionic/vue";
+import { ref, watch } from "vue";
+
+const props = defineProps({
+  modelValue: {
+    type: String,
+    default: "",
+  },
+});
+
+const descricao = ref(props.modelValue);
+const emit = defineEmits(["update:modelValue"]);
+
+const handleInput = (event) => {
+  emit("update:modelValue", event.target.value);
+};
+
+watch(
+  () => props.modelValue,
+  (newVal) => {
+    descricao.value = newVal;
+  }
+);
 </script>
 
-<style>
+<style scoped>
 .mais-detalhes {
   gap: 82px;
   width: 762px;
@@ -34,17 +60,19 @@ import { IonIcon } from "@ionic/vue";
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
 }
-.text-area-descricao {
+
+ion-textarea{
   resize: none;
   background-color: #f3f3f3;
   width: 459px;
-  height: 68px;
   border-radius: 15px;
   border: none;
   outline: none;
   font-size: 11px;
-  padding: 10px;
+  padding-left: 10px;
+  --font-weight: 300;
 }
+
 .area-de-descricao {
   gap: 5px;
   display: flex;
@@ -104,7 +132,15 @@ import { IonIcon } from "@ionic/vue";
 .estoque {
   background-color: #6e6e6c;
 }
-.componente-detalhes{
+.componente-detalhes {
   display: flex;
   gap: 82px;
-}</style>
+}
+
+ion-item {
+  --border-style: none;
+  --inner-border-width: 0;
+  --highlight-height: 0;
+  --padding-start: 0;
+}
+</style>

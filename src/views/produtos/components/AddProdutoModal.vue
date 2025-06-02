@@ -9,40 +9,65 @@
     <div class="conteudo-modal">
       <div class="inputs-adicionar-item">
         <div class="inputs-primeira-linha">
-          <div class="input-width">
-            <AtnInput label="nome" expand="block" v-model="produtoData.name" />
-          </div>
-          <div class="input-width">
-            <AtnInput label="categoria" expand="block" v-model="produtoData.category" />
-          </div>
-          <div class="input-width">
-            <AtnInput label="código" expand="block" v-model="produtoData.code"/>
-          </div>
+          <ion-item lines="none">
+            <ion-input
+              class="input-novo-produto"
+              placeholder="nome"
+              v-model="produtoData.name"
+            ></ion-input
+          ></ion-item>
+          <ion-item lines="none">
+            <ion-input
+              class="input-novo-produto"
+              placeholder="categoria"
+              v-model="produtoData.category"
+            ></ion-input
+          ></ion-item>
+          <ion-item lines="none">
+            <ion-input
+              class="input-novo-produto"
+              placeholder="código"
+              v-model="produtoData.code"
+            ></ion-input
+          ></ion-item>
         </div>
+
         <div class="inputs-segunda-linha">
-          <div class="input-width">
-            <AtnInput label="preço de custo" expand="block" v-model="produtoData.price_cost"/>
-          </div>
-          <div class="input-width">
-            <AtnInput label="preço de venda" expand="block" v-model="produtoData.price_sale"/>
-          </div>
-          <div class="inputs-radio">
-            <AtnRadio
-              v-model="medidaSelecionada"
-              optionName="option"
-              :options="optionsMedida"
-              label="Medida:"
-            ></AtnRadio>
-          </div>
+          <ion-item lines="none">
+            <ion-input
+              class="input-novo-produto"
+              placeholder="preço de custo"
+              v-model="produtoData.price_cost"
+            ></ion-input
+          ></ion-item>
+          <ion-item lines="none">
+            <ion-input
+              class="input-novo-produto"
+              placeholder="preço de venda"
+              v-model="produtoData.price_sale"
+            ></ion-input
+          ></ion-item>
+          <ion-radio-group v-model="medidaSelecionada" class="grupo-medidas">
+              <ion-label>Medidas:</ion-label>
+            <ion-item>
+              <ion-label>UN</ion-label>
+              <ion-radio slot="start" value="UN"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>KG</ion-label>
+              <ion-radio slot="start" value="KG"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>LG</ion-label>
+              <ion-radio slot="start" value="LG"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
         </div>
-        <div class="ativo">
-          <AtnRadio
-            :options="optionsAtivo"
-            optionName="option"
-            v-model="ativo"
-            label="Ativo:"
-          ></AtnRadio>
-        </div>
+        <ion-radio-group v-model="ativo">
+          <ion-label>Ativo:</ion-label>
+          <ion-radio class="rifhgt" value="sim">Sim</ion-radio>
+          <ion-radio value="nao">Não</ion-radio>
+        </ion-radio-group>
       </div>
       <div class="container-border">
         <div class="container-abas">
@@ -60,7 +85,9 @@
           </div>
         </div>
         <div class="mais-detalhes">
-          <div v-if="abaSelecionada === 'detalhes'"><MaisDetalhes /></div>
+          <div v-if="abaSelecionada === 'detalhes'">
+            <MaisDetalhes v-model="descricaoArea" />
+          </div>
           <div v-if="abaSelecionada === 'estoque'"><EstoqueProdutos /></div>
         </div>
       </div>
@@ -70,71 +97,84 @@
         <ion-icon class="icon-voltar" :icon="arrowBack" /><span>Voltar</span>
       </div>
       <div @click="addProduto">
-        <ion-icon class="icon-save" :icon="save" /><span
-          >Salvar</span
-        >
+        <ion-icon class="icon-save" :icon="save" /><span>Salvar</span>
       </div>
     </footer>
   </ion-content>
 </template>
 
 <script setup>
-import { AtnRadio, AtnInput } from "atena-core";
 import EstoqueProdutos from "./EstoqueProdutos.vue";
 import MaisDetalhes from "./MaisDetalhes.vue";
-import { IonContent, IonHeader, modalController } from "@ionic/vue";
-import { IonIcon } from "@ionic/vue";
+import {
+  IonContent,
+  IonHeader,
+  modalController,
+  IonIcon,
+  IonInput,
+  IonRadioGroup,
+  IonRadio,
+  IonLabel,
+  IonItem
+} from "@ionic/vue";
 import { arrowBack, closeCircle, save } from "ionicons/icons";
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { useProductStore } from "@/store/createProductStore";
+
+const medidaSelecionada = ref("");
+const ativo = ref("");
+const abaSelecionada = ref("detalhes");
+const descricaoArea = ref("");
 
 const produtoData = ref({
   name: "",
   category: "",
   code: "",
-  price_cost: 0,
-  price_sale: 0,
-  measure: "",
-  stock: "",
-  description: "",
-  image: ""
+  price_cost: "",
+  price_sale: "",
+  measure: medidaSelecionada.value,
+  stock: 0,
+  description: descricaoArea.value,
+  image: "",
 });
 
+defineProps({
+  numeroMesa: {
+    type: Number,
+  },
+});
 
 const addProduto = async () => {
   try {
     useProductStore().createProduct(produtoData.value);
+    produtoData.value = {
+      name: "",
+      category: "",
+      code: "",
+      price_cost: "",
+      price_sale: "",
+      measure: "",
+      stock: 0,
+      description: "",
+      image: "",
+    };
+    medidaSelecionada.value = "";
+    ativo.value = "";
+    descricaoArea.value = "";
   } catch (error) {
     console.error("Erro ao adicionar produto:", error);
   }
 };
 
-defineProps({
-  numeroMesa: {
-    type: Number
-  },
-});
-
-const cancel = () => modalController.dismiss(null, "cancel");
-
 const selecionaAba = (aba) => {
   abaSelecionada.value = aba;
 };
 
-const optionsAtivo = [
-  { value: "Sim", option: "Sim" },
-  { value: "Não", option: "Não" },
-];
+const cancel = () => modalController.dismiss(null, "cancel");
 
-const optionsMedida = [
-  { value: "UN", option: "UN" },
-  { value: "KG", option: "KG" },
-  { value: "L", option: "L" },
-];
-
-const medidaSelecionada = ref("");
-const ativo = ref("");
-const abaSelecionada = ref("detalhes");
+watch(medidaSelecionada, (novaMedida) => {
+  produtoData.value.measure = novaMedida;
+});
 </script>
 
 <style scoped>
@@ -191,7 +231,8 @@ footer {
   gap: 31px;
   justify-content: end;
 }
-.icon-voltar, .icon-save {
+.icon-voltar,
+.icon-save {
   color: #ac6200;
   width: 20px;
   height: 20px;
@@ -207,12 +248,7 @@ footer div {
   align-items: center;
   gap: 10px;
 }
-.inputs-radio {
-  display: flex;
-}
-.ativo {
-  display: flex;
-}
+
 .mais-detalhes {
   gap: 82px;
   width: 762px;
@@ -274,7 +310,40 @@ footer div {
   background-color: #ac6200;
 }
 
-.input-width {
-  width: 237px;
+.input-novo-produto {
+  width: 240px;
+  --background: #ecebeb;
+  --border-radius: 16px;
+  --padding-start: 16px;
+  --placeholder-font-weight: 300;
 }
+
+ion-item {
+  --border-style: none;
+  --inner-border-width: 0;
+  --highlight-height: 0;
+  --padding-start: 0;
+}
+
+.grupo-medidas {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+.grupo-medidas ion-label {
+  font-size: 12px;
+}
+
+.radio-container {
+  display: flex;
+  flex-direction: row;
+  gap: 16px; 
+}
+
+ion-radio {
+  --size: 12px; 
+  --color: #ecebeb; 
+  font-size: 14px;
+}
+
 </style>

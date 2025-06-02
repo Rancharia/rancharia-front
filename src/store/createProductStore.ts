@@ -9,11 +9,10 @@ export const useProductStore = defineStore("product-store", () => {
     const createProduct = async (product: any) => {
         try {
             const response = await createProductFetch(product)
-            console.log("response", response.data);
-            console.log("produto", productData.value);
-            return response.data;
+            console.log(response)
+            return response;
         } catch (error: any) {
-            console.error("Error creating product:", error.message);
+            console.error("Error:", error.message);
             throw error
         }
     };
