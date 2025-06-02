@@ -6,6 +6,7 @@
 </template>
 
 <script setup>
+import { IonIcon } from '@ionic/vue';
 
 defineProps({
     iconOption:{

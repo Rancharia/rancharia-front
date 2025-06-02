@@ -10,21 +10,21 @@
       <div class="inputs-adicionar-item">
         <div class="inputs-primeira-linha">
           <div class="input-width">
-            <AtnInput label="nome" expand="block" />
+            <AtnInput label="nome" expand="block" v-model="produtoData.name" />
           </div>
           <div class="input-width">
-            <AtnInput label="categoria" expand="block" />
+            <AtnInput label="categoria" expand="block" v-model="produtoData.category" />
           </div>
           <div class="input-width">
-            <AtnInput label="código" expand="block" />
+            <AtnInput label="código" expand="block" v-model="produtoData.code"/>
           </div>
         </div>
         <div class="inputs-segunda-linha">
           <div class="input-width">
-            <AtnInput label="preço de custo" expand="block" />
+            <AtnInput label="preço de custo" expand="block" v-model="produtoData.price_cost"/>
           </div>
           <div class="input-width">
-            <AtnInput label="preço de venda" expand="block" />
+            <AtnInput label="preço de venda" expand="block" v-model="produtoData.price_sale"/>
           </div>
           <div class="inputs-radio">
             <AtnRadio
@@ -47,13 +47,13 @@
       <div class="container-border">
         <div class="container-abas">
           <div
-            @click="selecianaAba('detalhes')"
+            @click="selecionaAba('detalhes')"
             :class="['aba', { selecionada: abaSelecionada === 'detalhes' }]"
           >
             <h2>Mais detalhes</h2>
           </div>
           <div
-            @click="selecianaAba('estoque')"
+            @click="selecionaAba('estoque')"
             :class="['aba', { selecionada: abaSelecionada === 'estoque' }]"
           >
             <h2>Estoque</h2>
@@ -69,14 +69,16 @@
       <div @click="cancel">
         <ion-icon class="icon-voltar" :icon="arrowBack" /><span>Voltar</span>
       </div>
-      <div>
-        <ion-icon class="icon-voltar" :icon="save" /><span>Salvar</span>
+      <div @click="addProduto">
+        <ion-icon class="icon-save" :icon="save" /><span
+          >Salvar</span
+        >
       </div>
     </footer>
   </ion-content>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 import { AtnRadio, AtnInput } from "atena-core";
 import EstoqueProdutos from "./EstoqueProdutos.vue";
 import MaisDetalhes from "./MaisDetalhes.vue";
@@ -84,16 +86,38 @@ import { IonContent, IonHeader, modalController } from "@ionic/vue";
 import { IonIcon } from "@ionic/vue";
 import { arrowBack, closeCircle, save } from "ionicons/icons";
 import { ref } from "vue";
+import { useProductStore } from "@/store/createProductStore";
+
+const produtoData = ref({
+  name: "",
+  category: "",
+  code: "",
+  price_cost: 0,
+  price_sale: 0,
+  measure: "",
+  stock: "",
+  description: "",
+  image: ""
+});
+
+
+const addProduto = async () => {
+  try {
+    useProductStore().createProduct(produtoData.value);
+  } catch (error) {
+    console.error("Erro ao adicionar produto:", error);
+  }
+};
 
 defineProps({
   numeroMesa: {
-    type: Number,
-    required: true,
+    type: Number
   },
 });
 
 const cancel = () => modalController.dismiss(null, "cancel");
-const selecianaAba = (aba: string) => {
+
+const selecionaAba = (aba) => {
   abaSelecionada.value = aba;
 };
 
@@ -167,7 +191,7 @@ footer {
   gap: 31px;
   justify-content: end;
 }
-.icon-voltar {
+.icon-voltar, .icon-save {
   color: #ac6200;
   width: 20px;
   height: 20px;
@@ -250,7 +274,7 @@ footer div {
   background-color: #ac6200;
 }
 
-.input-width{
+.input-width {
   width: 237px;
 }
 </style>
