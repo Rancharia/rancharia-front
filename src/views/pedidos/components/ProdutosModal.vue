@@ -4,13 +4,13 @@
       <h1>Produtos Cadastrados</h1>
       <ion-icon @click="cancel" class="close-icon" :icon="closeCircle" />
     </div>
-    <div class="buscar-produto">
-      <AtnInput
-        icon="search"
-        expand="block"
-        placeholder="Buscar número ou nome"
-      ></AtnInput>
-    </div>
+    <ion-item lines="none" class="input-container">
+      <ion-icon class="icon-list" :icon="searchOutline" />
+      <ion-input
+        class="ion-input-produtos-modal"
+        placeholder="Buscar Produto"
+      ></ion-input>
+    </ion-item>
   </ion-header>
   <ion-content>
     <table class="tabela-pedidos">
@@ -45,10 +45,14 @@
 </template>
 
 <script lang="ts" setup>
-import { AtnInput } from "atena-core";
 import { IonContent, IonHeader, modalController } from "@ionic/vue";
-import { IonIcon } from "@ionic/vue";
-import { closeCircle, listOutline, addOutline } from "ionicons/icons";
+import { IonIcon, IonInput, IonItem } from "@ionic/vue";
+import {
+  closeCircle,
+  listOutline,
+  addOutline,
+  searchOutline,
+} from "ionicons/icons";
 
 defineProps({
   numeroMesa: {
@@ -131,5 +135,16 @@ const produtos = [1, 2, 3, 4, 5];
 }
 .close-icon:hover {
   color: #e02727;
+}
+
+.ion-input-produtos-modal {
+  --border-radius: 16px;
+  --placeholder-font-weight: 300;
+  --padding-start: 16px;
+
+}
+.input-container {
+  width: 250px;
+  margin-left: 16px;
 }
 </style>

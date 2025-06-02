@@ -2,13 +2,13 @@
   <div class="pedidos">
     <div class="pesquisa">
       <h1>Pedidos</h1>
-      <div class="pesquisar-pedidos">
-        <AtnInput
-          icon="search"
+      <ion-item class="input-container" lines="none">
+         <ion-icon class="icon-search" :icon="searchOutline" />
+        <ion-input
+          class="ion-input-pedidos"
           placeholder="Buscar número ou nome"
-          expand="block"
-        />
-      </div>
+        ></ion-input>
+      </ion-item>
     </div>
     <div class="pedidos-em-andamento">
       <div>
@@ -39,12 +39,13 @@
 </template>
 
 <script setup>
-import { AtnInput } from "atena-core";
 import MesasLivres from "./components/MesasLivres.vue";
 import PedidosAndamento from "./components/PedidosAndamento.vue";
 import { modalController } from "@ionic/vue";
 import PedidosModal from "./components/PedidosModal.vue";
 import { ref } from "vue";
+import { IonIcon, IonInput } from "@ionic/vue";
+import { searchOutline } from "ionicons/icons";
 
 const mesas = ref([1, 2, 3, 4, 5, 6, 7]);
 const mesasLivres = ref([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
@@ -52,7 +53,7 @@ const mesasLivres = ref([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 const openModal = async (numeroMesa) => {
   const modal = await modalController.create({
     component: PedidosModal,
-    cssClass: 'modal-pedidos',
+    cssClass: "modal-pedidos",
     componentProps: {
       numeroMesa,
     },

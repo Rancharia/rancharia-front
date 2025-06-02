@@ -1,4 +1,4 @@
-.pedidos{
+.pedidos {
     height: 100vh;
     font-family: Poppins;
     padding-bottom: 161px;
@@ -11,11 +11,13 @@
     padding-bottom: 15px;
     border-bottom: 1px solid #AC6200;
 }
+
 .pesquisa h1 {
     color: #CE821D;
     font-size: 18px;
     margin-bottom: 12px;
-    font-weight: 600;;
+    font-weight: 600;
+    ;
 }
 
 .icon-pesquisa {
@@ -25,11 +27,7 @@
     margin-right: 8px;
 }
 
-.pesquisar-pedidos{
-    width: 380px; 
-}
-
-.pedidos-em-andamento h1{
+.pedidos-em-andamento h1 {
     font-weight: 600;
     font-size: 16px;
     margin-bottom: 9px;
@@ -37,10 +35,12 @@
     margin-top: 15px;
     margin-bottom: 9px;
 }
+
 .pedidos-em-andamento {
     margin-bottom: 30px;
 }
-.mesas-livres h1{
+
+.mesas-livres h1 {
     margin: 0;
     font-weight: 600;
     font-size: 16px;
@@ -48,7 +48,7 @@
     margin-bottom: 9px;
 }
 
-.pedidos-em-andamento-grid{
+.pedidos-em-andamento-grid {
     flex-wrap: wrap;
     display: flex;
     gap: 20px;
@@ -59,8 +59,23 @@
     display: flex;
     gap: 20px;
 }
+
 .botoes {
     display: flex;
     gap: 20px;
     margin-top: 10px;
+}
+
+ion-input.ion-input-pedidos {
+    --background: #ecebeb;
+    --padding-start: 16px;
+    --placeholder-font-weight: 300;
+    width: 380px;
+}
+
+.input-container {
+    --background: #ecebeb;
+    width: 380px;
+    --border-radius: 16px;
+    --padding-start: 16px;
 }
