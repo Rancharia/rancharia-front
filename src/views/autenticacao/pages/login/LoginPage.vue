@@ -1,23 +1,23 @@
 <template>
   <form @submit.prevent>
-    <ion-item lines="none" class="campo-item">
+    <ion-item lines="none" id="campo-item">
       <ion-icon :icon="person" class="icon"></ion-icon>
       <ion-input
         v-model="userLogin.username"
-        class="ion-input-login"
+        id="ion-input-login"
         placeholder="Cpf ou e-mail"
       ></ion-input>
     </ion-item>
-    <ion-item lines="none" class="campo-item">
+    <ion-item lines="none" id="campo-item">
           <ion-icon :icon="person" class="icon"></ion-icon>
       <ion-input
       type="password"
         v-model="userLogin.password"
-        class="ion-input-login"
+        id="ion-input-login"
         placeholder="Senha"
       ></ion-input>
     </ion-item>
-    <ion-button @click="fetchLogin" class="ion-button">Acessar</ion-button>
+    <ion-button @click="fetchLogin" id="ion-button">Acessar</ion-button>
   </form>
 </template>
 
