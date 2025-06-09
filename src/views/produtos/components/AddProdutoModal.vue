@@ -17,16 +17,14 @@
             ></ion-input
           ></ion-item>
           <ion-list>
-            <ion-item>
-              <ion-select id="select-categoria"
-                aria-label="Fruit"
+            <ion-item lines="none">
+              <ion-select
+                id="select-categoria"
                 interface="popover"
                 placeholder="Categoria:"
                 v-model="produtoData.category"
               >
-                <ion-select-option value="Típicas"
-                  >Típicas</ion-select-option
-                >
+                <ion-select-option value="Típicas">Típicas</ion-select-option>
                 <ion-select-option value="categoria 2"
                   >categoria 2</ion-select-option
                 >
@@ -63,25 +61,40 @@
             ></ion-input
           ></ion-item>
           <ion-radio-group v-model="medidaSelecionada" class="grupo-medidas">
-            <ion-label>Medidas:</ion-label>
-            <ion-item>
-              <ion-label>UN</ion-label>
-              <ion-radio slot="start" value="UN"></ion-radio>
-            </ion-item>
-            <ion-item>
-              <ion-label>KG</ion-label>
-              <ion-radio slot="start" value="KG"></ion-radio>
-            </ion-item>
-            <ion-item>
-              <ion-label>LG</ion-label>
-              <ion-radio slot="start" value="LG"></ion-radio>
-            </ion-item>
+            <div class="row">
+              <ion-label id="medidas-label">Medidas:</ion-label>
+              <ion-item lines="none">
+                <ion-radio label-placement="start" id="medida-un" value="UN"
+                  >UN</ion-radio
+                >
+              </ion-item>
+              <ion-item lines="none">
+                <ion-radio label-placement="start" id="medida-kg" value="KG"
+                  >KG</ion-radio
+                >
+              </ion-item>
+              <ion-item lines="none">
+                <ion-radio label-placement="start" id="medida-lg" value="LG"
+                  >LG</ion-radio
+                >
+              </ion-item>
+            </div>
           </ion-radio-group>
         </div>
         <ion-radio-group v-model="ativo">
-          <ion-label>Ativo:</ion-label>
-          <ion-radio class="rifhgt" value="sim">Sim</ion-radio>
-          <ion-radio value="nao">Não</ion-radio>
+          <div class="row">
+            <ion-label id="ativo-label">Ativo:</ion-label>
+            <ion-item lines="none">
+              <ion-radio label-placement="start" value="sim"
+                >Sim</ion-radio
+              ></ion-item
+            >
+            <ion-item lines="none">
+              <ion-radio label-placement="start" value="nao"
+                >Não</ion-radio
+              ></ion-item
+            >
+          </div>
         </ion-radio-group>
       </div>
       <div class="container-border">
@@ -152,7 +165,7 @@ const produtoData = ref({
   measure: "",
   stock: 0,
   description: null,
-  image: ""
+  image: "",
 });
 
 const addProduto = async () => {
@@ -191,8 +204,6 @@ defineProps({
     type: Number,
   },
 });
-
-
 </script>
 
 <style scoped>
@@ -238,6 +249,7 @@ defineProps({
 .inputs-segunda-linha {
   display: flex;
   gap: 35px;
+  align-items: center;
 }
 footer {
   position: fixed;
@@ -347,26 +359,37 @@ footer div {
   padding-left: 16px;
 }
 
-::v-deep(#input-novo-produto) label {
+::v-deep(#input-novo-produto) label,
+#medidas-label,
+#ativo-label {
   font-weight: 600;
   font-size: 11px;
+  color: #6e6e6c;
 }
 
-.grupo-medidas {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.radio-container {
-  display: flex;
-  flex-direction: row;
-  gap: 16px;
+#ativo-label,
+#medidas-label {
+  margin-right: 10px;
 }
 
 ion-radio {
   --size: 12px;
   --color: #ecebeb;
-  font-size: 14px;
+  font-size: 10px;
+}
+
+
+.row {
+  display: flex;
+  align-items: center;
+}
+
+#select-categoria {
+  font-weight: 600;
+  font-size: 11px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 16px;
+  height: 27px;
 }
 </style>
