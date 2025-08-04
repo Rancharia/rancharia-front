@@ -8,6 +8,7 @@ export const createProductFetch = async (produto: IProduto) => {
         Authorization: `${localStorage.getItem("token")}`,
       },
     });
+    console.log("resposta:", response);
     return response
   } catch (error: any) {
     console.error("Error:", error);
@@ -22,7 +23,7 @@ export const ProductFetch = async () => {
         Authorization: `${localStorage.getItem("token")}`,
       },
     });
-    console.log("resposta:", response);
+    console.log("resposta all:", response);
     return response.data;
   } catch (error: any) {
     console.error("Error", error);

@@ -7,34 +7,34 @@
   </ion-header>
   <ion-content>
     <div class="detalhes-produto">
-      <div class="card-detalhe">
-        <h1 class="titulo-produto">Nome:</h1>
+      <ion-item lines="none" class="card-detalhe">
         <ion-input
+          label="Nome:"
           v-model="produtoEditavel.name"
-          class="ion-input-edit-produto"
+          id="ion-input-edit-produto"
         ></ion-input>
-      </div>
-      <div class="card-detalhe">
-        <h1 class="titulo-produto">Código:</h1>
+      </ion-item>
+      <ion-item lines="none" class="card-detalhe">
         <ion-input
+          label="Código:"
           v-model="produtoEditavel.code"
-          class="ion-input-edit-produto"
+          id="ion-input-edit-produto"
         ></ion-input>
-      </div>
-      <div class="card-detalhe">
-        <h1 class="titulo-produto">Categoria:</h1>
+      </ion-item>
+      <ion-item class="card-detalhe">
         <ion-input
+          label="Categoria:"
           v-model="produtoEditavel.category"
-          class="ion-input-edit-produto"
+          id="ion-input-edit-produto"
         ></ion-input>
-      </div>
-      <div class="card-detalhe">
-        <h1 class="titulo-produto">Preço de venda:</h1>
+      </ion-item>
+      <ion-item  class="card-detalhe">
         <ion-input
+          label="Preço de venda:"
           v-model.number="produtoEditavel.price_cost"
-          class="ion-input-edit-produto"
+          id="ion-input-edit-produto"
         ></ion-input>
-      </div>
+      </ion-item>
       <button class="edit-button" @click="salvarEdicao">Salvar</button>
     </div>
   </ion-content>
@@ -42,7 +42,7 @@
 
 <script setup>
 import { ref, watch } from "vue";
-import { modalController } from "@ionic/vue";
+import { modalController, IonInput, IonIcon, IonItem, IonContent, IonHeader } from "@ionic/vue";
 import { closeCircle } from "ionicons/icons";
 
 const props = defineProps({
@@ -105,9 +105,7 @@ const salvarEdicao = () => {
 }
 
 .card-detalhe {
-  padding-left: 12px;
   display: flex;
-  align-items: center;
   border: 1px solid #ac6200;
   border-radius: 10px;
 }
@@ -129,5 +127,14 @@ const salvarEdicao = () => {
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
+}
+
+#ion-input-edit-produto {
+  padding-left: 10px;
+  margin-left: 20px;
+  width: 100%;
+}
+::v-deep(#ion-input-edit-produto) input {
+  font-weight: 300;
 }
 </style>

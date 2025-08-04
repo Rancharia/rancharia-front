@@ -9,64 +9,92 @@
     <div class="conteudo-modal">
       <div class="inputs-adicionar-item">
         <div class="inputs-primeira-linha">
-          <ion-item lines="none">
+          <ion-item lines="none" id="input-contaner-novo-produto">
             <ion-input
-              class="input-novo-produto"
-              placeholder="nome"
+              label="nome:"
+              id="input-novo-produto"
               v-model="produtoData.name"
             ></ion-input
           ></ion-item>
-          <ion-item lines="none">
+          <ion-list>
+            <ion-item lines="none">
+              <ion-select
+                id="select-categoria"
+                interface="popover"
+                placeholder="Categoria:"
+                v-model="produtoData.category"
+              >
+                <ion-select-option value="Típicas">Típicas</ion-select-option>
+                <ion-select-option value="categoria 2"
+                  >categoria 2</ion-select-option
+                >
+                <ion-select-option value="categoria 3"
+                  >categoria 3</ion-select-option
+                >
+              </ion-select>
+            </ion-item>
+          </ion-list>
+          <ion-item lines="none" id="input-contaner-novo-produto">
             <ion-input
-              class="input-novo-produto"
-              placeholder="categoria"
-              v-model="produtoData.category"
-            ></ion-input
-          ></ion-item>
-          <ion-item lines="none">
-            <ion-input
-              class="input-novo-produto"
-              placeholder="código"
+              id="input-novo-produto"
+              label="código:"
               v-model="produtoData.code"
             ></ion-input
           ></ion-item>
         </div>
 
         <div class="inputs-segunda-linha">
-          <ion-item lines="none">
+          <ion-item lines="none" id="input-contaner-novo-produto">
             <ion-input
-              class="input-novo-produto"
-              placeholder="preço de custo"
+              id="input-novo-produto"
+              label="preço de custo:"
+              type="number"
               v-model="produtoData.price_cost"
             ></ion-input
           ></ion-item>
-          <ion-item lines="none">
+          <ion-item lines="none" id="input-contaner-novo-produto">
             <ion-input
-              class="input-novo-produto"
-              placeholder="preço de venda"
+              id="input-novo-produto"
+              label="preço de venda:"
+              type="number"
               v-model="produtoData.price_sale"
             ></ion-input
           ></ion-item>
           <ion-radio-group v-model="medidaSelecionada" class="grupo-medidas">
-              <ion-label>Medidas:</ion-label>
-            <ion-item>
-              <ion-label>UN</ion-label>
-              <ion-radio slot="start" value="UN"></ion-radio>
-            </ion-item>
-            <ion-item>
-              <ion-label>KG</ion-label>
-              <ion-radio slot="start" value="KG"></ion-radio>
-            </ion-item>
-            <ion-item>
-              <ion-label>LG</ion-label>
-              <ion-radio slot="start" value="LG"></ion-radio>
-            </ion-item>
+            <div class="row">
+              <ion-label id="medidas-label">Medidas:</ion-label>
+              <ion-item lines="none">
+                <ion-radio label-placement="start" id="medida-un" value="UN"
+                  >UN</ion-radio
+                >
+              </ion-item>
+              <ion-item lines="none">
+                <ion-radio label-placement="start" id="medida-kg" value="KG"
+                  >KG</ion-radio
+                >
+              </ion-item>
+              <ion-item lines="none">
+                <ion-radio label-placement="start" id="medida-lg" value="LG"
+                  >LG</ion-radio
+                >
+              </ion-item>
+            </div>
           </ion-radio-group>
         </div>
         <ion-radio-group v-model="ativo">
-          <ion-label>Ativo:</ion-label>
-          <ion-radio class="rifhgt" value="sim">Sim</ion-radio>
-          <ion-radio value="nao">Não</ion-radio>
+          <div class="row">
+            <ion-label id="ativo-label">Ativo:</ion-label>
+            <ion-item lines="none">
+              <ion-radio label-placement="start" value="sim"
+                >Sim</ion-radio
+              ></ion-item
+            >
+            <ion-item lines="none">
+              <ion-radio label-placement="start" value="nao"
+                >Não</ion-radio
+              ></ion-item
+            >
+          </div>
         </ion-radio-group>
       </div>
       <div class="container-border">
@@ -86,7 +114,7 @@
         </div>
         <div class="mais-detalhes">
           <div v-if="abaSelecionada === 'detalhes'">
-            <MaisDetalhes v-model="descricaoArea" />
+            <MaisDetalhes v-model="produtoData.description" />
           </div>
           <div v-if="abaSelecionada === 'estoque'"><EstoqueProdutos /></div>
         </div>
@@ -115,7 +143,10 @@ import {
   IonRadioGroup,
   IonRadio,
   IonLabel,
-  IonItem
+  IonItem,
+  IonList,
+  IonSelect,
+  IonSelectOption,
 } from "@ionic/vue";
 import { arrowBack, closeCircle, save } from "ionicons/icons";
 import { ref, watch } from "vue";
@@ -124,7 +155,6 @@ import { useProductStore } from "@/store/createProductStore";
 const medidaSelecionada = ref("");
 const ativo = ref("");
 const abaSelecionada = ref("detalhes");
-const descricaoArea = ref("");
 
 const produtoData = ref({
   name: "",
@@ -132,16 +162,10 @@ const produtoData = ref({
   code: "",
   price_cost: "",
   price_sale: "",
-  measure: medidaSelecionada.value,
+  measure: "",
   stock: 0,
-  description: descricaoArea.value,
+  description: null,
   image: "",
-});
-
-defineProps({
-  numeroMesa: {
-    type: Number,
-  },
 });
 
 const addProduto = async () => {
@@ -160,7 +184,6 @@ const addProduto = async () => {
     };
     medidaSelecionada.value = "";
     ativo.value = "";
-    descricaoArea.value = "";
   } catch (error) {
     console.error("Erro ao adicionar produto:", error);
   }
@@ -174,6 +197,12 @@ const cancel = () => modalController.dismiss(null, "cancel");
 
 watch(medidaSelecionada, (novaMedida) => {
   produtoData.value.measure = novaMedida;
+});
+
+defineProps({
+  numeroMesa: {
+    type: Number,
+  },
 });
 </script>
 
@@ -220,6 +249,7 @@ watch(medidaSelecionada, (novaMedida) => {
 .inputs-segunda-linha {
   display: flex;
   gap: 35px;
+  align-items: center;
 }
 footer {
   position: fixed;
@@ -310,40 +340,56 @@ footer div {
   background-color: #ac6200;
 }
 
-.input-novo-produto {
-  width: 240px;
-  --background: #ecebeb;
+#input-contaner-novo-produto {
   --border-radius: 16px;
-  --padding-start: 16px;
+  --min-height: 27px;
+}
+
+#input-novo-produto {
   --placeholder-font-weight: 300;
+  --placeholder-color: #6e6e6c;
+  min-height: 27px;
+  width: 230px;
 }
 
-ion-item {
-  --border-style: none;
-  --inner-border-width: 0;
-  --highlight-height: 0;
-  --padding-start: 0;
+::v-deep(#input-novo-produto) input {
+  font-weight: 300;
+  background-color: #f3f3f3;
+  border-radius: 16px;
+  padding-left: 16px;
 }
 
-.grupo-medidas {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-}
-.grupo-medidas ion-label {
-  font-size: 12px;
+::v-deep(#input-novo-produto) label,
+#medidas-label,
+#ativo-label {
+  font-weight: 600;
+  font-size: 11px;
+  color: #6e6e6c;
 }
 
-.radio-container {
-  display: flex;
-  flex-direction: row;
-  gap: 16px; 
+#ativo-label,
+#medidas-label {
+  margin-right: 10px;
 }
 
 ion-radio {
-  --size: 12px; 
-  --color: #ecebeb; 
-  font-size: 14px;
+  --size: 12px;
+  --color: #ecebeb;
+  font-size: 10px;
 }
 
+
+.row {
+  display: flex;
+  align-items: center;
+}
+
+#select-categoria {
+  font-weight: 600;
+  font-size: 11px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 16px;
+  height: 27px;
+}
 </style>

@@ -23,7 +23,7 @@
 
 <script setup>
 import { camera } from "ionicons/icons";
-import { IonIcon } from "@ionic/vue";
+import { IonIcon, IonItem, IonTextarea } from "@ionic/vue";
 import { ref, watch } from "vue";
 
 const props = defineProps({
