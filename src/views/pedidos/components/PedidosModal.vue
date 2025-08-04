@@ -7,7 +7,10 @@
     <div class="descricao-pedido-modal">
       <div class="left-pedidos">
         <div>
-          <h1 class="numero-mesa">0{{ numeroMesa }}</h1>
+          <h1 class="numero-mesa">
+            <span class="numero-mesa" v-if="numeroMesa < 10">0</span
+            >{{ numeroMesa }}
+          </h1>
         </div>
         <div class="registro-pedido">
           <p>pedido n <span class="numero-pedido">0001</span></p>
@@ -15,9 +18,10 @@
         </div>
       </div>
       <div class="right-pedidos">
-        <ion-item lines="none">
+        <ion-item id="input-container-pedidos-modal" lines="none">
+          <ion-icon id="icon-search-modal" :icon="search" />
           <ion-input
-            class="ion-input-pedidos-modal"
+            id="ion-input-pedidos-modal"
             placeholder="Buscar número ou nome"
           ></ion-input>
         </ion-item>
@@ -92,6 +96,7 @@ import {
   person,
   menu,
   cashOutline,
+  search,
 } from "ionicons/icons";
 
 defineProps({
@@ -213,7 +218,8 @@ footer {
   width: 20px;
   height: 20px;
 }
-.icon-pagamento, .icon-imprimir {
+.icon-pagamento,
+.icon-imprimir {
   color: #ffffff;
   width: 20px;
   height: 20px;
@@ -353,10 +359,30 @@ footer div {
   width: 100%;
 }
 
-.ion-input-pedidos-modal {
-  --background: #ecebeb;
-  --border-radius: 16px;
-  --placeholder-font-weight: 300;
+#ion-input-pedidos-modal {
+  --background: #f3f3f3;
   --padding-start: 16px;
+  --placeholder-font-weight: 300;
+  --placeholder-font-size: 1px;
+  width: 100%;
+  min-height: 40px;
+}
+
+::v-deep(#ion-input-pedidos-modal) input {
+  font-weight: 300;
+  width: 100%;
+  font-size: 10px;
+}
+
+#input-container-pedidos-modal {
+  --background: #f3f3f3;
+  width: 186px;
+  --border-radius: 16px;
+  --min-height: 40px;
+  --padding-start: 12px;
+}
+#icon-search-modal {
+  width: 18px;
+  height: 18px;
 }
 </style>
