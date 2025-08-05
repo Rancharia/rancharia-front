@@ -150,7 +150,7 @@ import {
 } from "@ionic/vue";
 import { arrowBack, closeCircle, save } from "ionicons/icons";
 import { ref, watch } from "vue";
-import { useProductStore } from "@/store/createProductStore";
+import { useProductStore } from "@/store/productsStore";
 
 const medidaSelecionada = ref("");
 const ativo = ref("");

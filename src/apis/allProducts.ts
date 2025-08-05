@@ -1,7 +1,7 @@
 import api from "@/boot/axiosConfig";
 import { IProduto } from "@/interfaces/produtoInterface";
 
-export const createProductFetch = async (produto: IProduto) => {
+export const criarProduto = async (produto: IProduto) => {
   try {
     const response = await api.post("/product", produto, {
       headers: {
@@ -16,7 +16,7 @@ export const createProductFetch = async (produto: IProduto) => {
   }
 };
 
-export const ProductFetch = async () => {
+export const listaProdutos = async () => {
   try {
     const response = await api.get("product/all", {
       headers: {

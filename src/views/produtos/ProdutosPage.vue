@@ -45,15 +45,13 @@ import { IonIcon, IonInput, IonItem } from "@ionic/vue";
 import AddProdutoModal from "./components/AddProdutoModal.vue";
 import { add, pencil, albums, search } from "ionicons/icons";
 import { onMounted, computed } from "vue";
-import { useProdutoStore } from "@/store/produtoStore";
 import { useShowProductStore } from "@/store/showProduct";
 import DetalheModal from "./components/DetalheModal.vue";
-import { useEditProductStore } from "@/store/editProduct";
+import { useProductStore } from "@/store/productsStore";
 
-const editProducsStore = useEditProductStore();
 const showProductStore = useShowProductStore();
-const produtoStore = useProdutoStore();
-const produtos = computed(() => produtoStore.produtos);
+const productStore = useProductStore();
+const produtos = computed(() => productStore.produtos);
 
 onMounted(() => {
   getProdutos();
@@ -72,7 +70,7 @@ const productDetails = async (id) => {
 
     modal.onDidDismiss().then(async ({ data, role }) => {
       if (role === "save" && data) {
-        await editProducsStore.editarProdutos(data, id);
+        await productStore.editarProdutos(data, id);
         await getProdutos();
       }
     });
@@ -85,9 +83,9 @@ const productDetails = async (id) => {
 
 const getProdutos = async () => {
   try {
-    await produtoStore.getProdutos();
+    await productStore.fetchProduct();
   } catch (error) {
-    console.log("Erro ao buscar produtos:", error);
+    throw error
   }
 };
 
