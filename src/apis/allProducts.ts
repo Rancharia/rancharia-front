@@ -8,10 +8,8 @@ export const criarProduto = async (produto: IProduto) => {
         Authorization: `${localStorage.getItem("token")}`,
       },
     });
-    console.log("resposta:", response);
     return response
   } catch (error: any) {
-    console.error("Error:", error);
     return error.response?.data || error;
   }
 };
@@ -23,10 +21,8 @@ export const listaProdutos = async () => {
         Authorization: `${localStorage.getItem("token")}`,
       },
     });
-    console.log("resposta all:", response);
     return response.data;
   } catch (error: any) {
-    console.error("Error", error);
     return error.response?.data || error;
   }
 };
@@ -53,7 +49,6 @@ export const showProduct = async ( id: number) => {
     });
     return response.data;
   } catch (error: any) {
-    console.error("Error:", error);
     return error.response?.data || error;
   }
 }

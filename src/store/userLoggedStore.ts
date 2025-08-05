@@ -9,11 +9,9 @@ export const useUserLoggedStore = defineStore("user-logged", () => {
     const userLogged = async () => {
         try {
           const response = await userLoggedFetch();
-          console.log("Dados do usuário na store:", response.data);
           userLoggedData.value  = response.data;
           return response;
         } catch (error: any) {
-          userLoggedData.value = null;
           throw error;
         }
       };

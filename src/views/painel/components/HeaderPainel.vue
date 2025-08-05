@@ -7,7 +7,7 @@
     />
     <div class="icones-direita">
       <ion-icon
-        @click="fetchLogout"
+        @click="logout"
         :icon="arrowBack"
         class="icon sino"
       ></ion-icon>
@@ -20,17 +20,17 @@
 <script setup>
 import { IonIcon } from "@ionic/vue";
 import { person, notifications, arrowBack } from "ionicons/icons";
-import { useLogoutStore } from "@/store/logoutStore";
+import { useAuthStore } from "@/store/authStore";
 
 import { useRouter } from "vue-router";
 const router = useRouter();
 
-const fetchLogout = async () => {
+const logout = async () => {
   try {
-    await useLogoutStore().userLogout();
+    await useAuthStore().userLogout();
     router.push({ name: "login" });
   } catch (error) {
-    console.log("Falha no logout:", error);
+    throw error;
   }
 };
 

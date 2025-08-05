@@ -1,4 +1,4 @@
 export const environment = {
-  apiUrl: "https://api-hml-rancharia.atenaagencia.com/api/",
+  apiUrl: "https://api-hml-rancharia.atenaagencia.com/api",
 };
 
